@@ -12,13 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
-
-        <Button
-            android:id="@+id/to_details_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toDetailsActivity"
-            android:text="To Details Activity" />
+            android:text="Welcome to details activity!" />
     </LinearLayout>
+
 </ScrollView>
