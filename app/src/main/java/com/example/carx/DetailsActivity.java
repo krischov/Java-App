@@ -16,7 +16,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         if (actionBar != null) {
             actionBar.setTitle(Html.fromHtml("<font color=\"black\"> CARX </font>", 0));
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
     }
 }
