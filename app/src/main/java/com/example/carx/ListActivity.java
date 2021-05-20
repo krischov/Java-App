@@ -16,7 +16,8 @@ public class ListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle(Html.fromHtml("<font color=\"black\"> CARX </font>", 0));
+            actionBar.setCustomView(R.layout.actionbar_layout);
+            actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }

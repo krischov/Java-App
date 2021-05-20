@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle(Html.fromHtml("<font color=\"black\"> CARX </font>", 0));
+            actionBar.setCustomView(R.layout.actionbar_layout);
+            actionBar.setDisplayShowCustomEnabled(true);
         }
     }
     public void toListActivity(View view) {
