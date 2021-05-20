@@ -1,6 +1,7 @@
 package com.example.carx;
 
 import android.os.Bundle;
+import android.text.Html;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ public class DetailsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle("CARX");
+            actionBar.setTitle(Html.fromHtml("<font color=\"black\"> CARX </font>", 0));
         }
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
