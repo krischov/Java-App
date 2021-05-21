@@ -10,18 +10,99 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp">
-
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!" />
-
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/myImageView"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@layout/image_view_border"
+                android:cropToPadding="true"
+                android:src="@drawable/suv" />
+            <TextView
+                android:id="@+id/myImageViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/myImageView"
+                android:layout_alignTop="@+id/myImageView"
+                android:layout_alignRight="@+id/myImageView"
+                android:layout_alignBottom="@+id/myImageView"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="SUVs"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/myImageView2"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@layout/image_view_border"
+                android:cropToPadding="true"
+                android:src="@drawable/supercar" />
+            <TextView
+                android:id="@+id/myImageViewText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/myImageView2"
+                android:layout_alignTop="@+id/myImageView2"
+                android:layout_alignRight="@+id/myImageView2"
+                android:layout_alignBottom="@+id/myImageView2"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="SUPERCARS"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/myImageView3"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@layout/image_view_border"
+                android:cropToPadding="true"
+                android:src="@drawable/jdm" />
+            <TextView
+                android:id="@+id/myImageViewText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/myImageView3"
+                android:layout_alignTop="@+id/myImageView3"
+                android:layout_alignRight="@+id/myImageView3"
+                android:layout_alignBottom="@+id/myImageView3"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="JDM"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+        </RelativeLayout>
         <Button
             android:id="@+id/to_list_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="To List Activity"
-            android:onClick="toListActivity"/>
+            android:onClick="toListActivity"
+            android:text="To List Activity" />
     </LinearLayout>
 
 </ScrollView>
