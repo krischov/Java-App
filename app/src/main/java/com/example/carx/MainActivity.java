@@ -7,7 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -40,5 +45,25 @@ public class MainActivity extends AppCompatActivity {
     public void toListActivity(View view) {
         Intent intent = new Intent(this, ListActivity.class);
         this.startActivity(intent);
+    }
+    public void toggleFilters(View view) {
+        LinearLayout searchFilters = findViewById(R.id.search_filters);
+        if(searchFilters.getVisibility() == View.GONE ){
+            searchFilters.setVisibility(View.VISIBLE);
+            searchFilters.setAlpha(0);
+            searchFilters.animate()
+                    .alpha(1f)
+                    .start();
+        } else {
+            searchFilters.animate()
+                    .alpha(0f)
+                    .withEndAction(new Runnable() {
+                        @Override
+                        public void run() {
+                            searchFilters.setVisibility(View.GONE);
+                        }
+                    })
+                    .start();
+        }
     }
 }
