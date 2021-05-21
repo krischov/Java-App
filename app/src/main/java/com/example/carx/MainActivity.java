@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Contact> contacts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         // That's all!
     }
+
     public void toListActivity(View view) {
         Intent intent = new Intent(this, ListActivity.class);
         this.startActivity(intent);
     }
+
     public void toggleFilters(View view) {
         LinearLayout searchFilters = findViewById(R.id.search_filters);
-        if(searchFilters.getVisibility() == View.GONE ){
+        if (searchFilters.getVisibility() == View.GONE) {
             searchFilters.setVisibility(View.VISIBLE);
             searchFilters.setAlpha(0);
             searchFilters.animate()
