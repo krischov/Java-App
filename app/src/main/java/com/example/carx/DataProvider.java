@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class DataProvider {
 
-    ArrayList<Cars> totalCars, allHyperCars, allJdms, allSuvs;
+    ArrayList<Cars> totalCars, allSuperCars, allJdms, allSuvs;
 
     public DataProvider(){
 
@@ -51,6 +51,7 @@ public class DataProvider {
 
         this.allJdms = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10));
         this.allSuvs = new ArrayList<Cars>(Arrays.asList(suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
+        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
     public ArrayList<Cars> getTopPicks(int num_topPicks){
@@ -72,11 +73,11 @@ public class DataProvider {
     }
 
     public ArrayList<Cars> getAllHyperCars() {
-        return allHyperCars;
+        return allSuperCars;
     }
 
     public void setAllHyperCars(ArrayList<Cars> allHyperCars) {
-        this.allHyperCars = allHyperCars;
+        this.allSuperCars = allHyperCars;
     }
 
     public ArrayList<Cars> getAllJdms() {
