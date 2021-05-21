@@ -40,9 +40,6 @@ public class ContactsAdapter extends
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
         textView.setText(contact.getName());
-        Button button = holder.messageButton;
-        button.setText(contact.isOnline() ? "Message" : "Offline");
-        button.setEnabled(contact.isOnline());
     }
 
     // Returns the total count of items in the list
@@ -57,8 +54,6 @@ public class ContactsAdapter extends
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView nameTextView;
-        public Button messageButton;
-
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
@@ -67,7 +62,6 @@ public class ContactsAdapter extends
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
-            messageButton = (Button) itemView.findViewById(R.id.message_button);
         }
     }
     // Store a member variable for the contacts
