@@ -15,10 +15,6 @@ public class Contact {
         return mName;
     }
 
-    public boolean isOnline() {
-        return mOnline;
-    }
-
     private static int lastContactId = 0;
 
     public static ArrayList<Contact> createContactsList(int numContacts) {
