@@ -175,11 +175,37 @@ public class DataProvider {
                 true);
 
         //SUPERCARS
-        Supercar supercar1 = new Supercar();
-        Supercar supercar2 = new Supercar();
-        Supercar supercar3 = new Supercar();
-        Supercar supercar4 = new Supercar();
-        Supercar supercar5 = new Supercar();
+        Supercar supercar1 = new Supercar(215000f,
+                "Just Arrived***2015 Lamborghini Huracan LP610-4 AWD Coupe***Sportivo Bicolor Interior w/Smooth Leather Package***Navigation System***Lamborghini Infotainment System II***Front & Rear Parking Sensors***Rear Vision Camera***Sport Steering Wheel w/Paddle Shifters***Push Button Start***Remote Keyless Entry***Alcantara Door Trim***Premium Smooth Leather Seating Surfaces w/Full Electric Adjustable Heated Sport Bucket Seats***Illuminated Entry***Huracan Door Sills***Lifting System & Magnetorheological Suspension Package***Silver Painted Calipers***LED Daytime Running Lamps***HID Headlamps w/Headlamp Cleaning***LED Taillamps***Rear Window Side Vents***Power Heated Folding Door Mirrors***Security System***20\" x 8.5\" Front & 20\" x 11\" Rear Giano Silver Alloy Wheels***5.2L V10 DOHC 40V Engine***7-Speed Automatic Transmission***Blu Achelous Metallic Transmission***Clean Carfax History Report!!! Well Maintained!!! Fully Serviced!!! Only 15,800 Miles!!! Stunning Blu Achelous Metallic Paint!!! Loaded Up!!! Great Buy!!!"
+                , "2015 Lamborghini Huracan LP610-4",
+                new ArrayList<String>(Arrays.asList("sc1_1", "sc1_2", "sc1_3")),
+                true,
+                320);
+        Supercar supercar2 = new Supercar(272700f,
+                "Ferrari of Newport Beach is proud to present this 2016 Ferrari 488 Spider in Rosso Corsa with Beige Tradizione interior. Options include: Apple Carplay, Adaptive Frontlight System, Leather Upholst. Seat Backrest, Yellow Brake Calipers, Carbon Fiber Rear Air-Ducts, Carbon Fiber Fog Lamp, Carbon Fiber Driver Zone + LED's, Carbon Fiber Central Bridge, Central Tunnel in Leather, Dash Inserts Carbon Fiber, Suspension Lifter, Cavallino Stitched on Headrest, Sport Exhaust System, Colored Mats with Logo, Scuderia Ferrari Shields, Parking Camera, Front and Rear Parking Sensors, 20 Forged Dark Painted Rims, Yellow Rev. Counter, Full Electric Seats, Premium Hi-Fi System and Colored Special Stitching O.R.  "
+                , "2016 Ferrari 488 Spider",
+                new ArrayList<String>(Arrays.asList("sc2_1", "sc2_2", "sc2_3")),
+                true,
+                333);
+        Supercar supercar3 = new Supercar(259900f,
+                "Own this CARFAX 1-Owner and Buyback Guarantee Qualified 600LT today, worry free! WARRANTY A Factory Warranty is included with this vehicle. Contact seller for more information. EXTREMELY LOW MILES! Get the best value from your vehicle purchase. This 2019 boasts an extremely low 927 miles! LOADED WITH VALUE! This McLaren 600LT comes equipped with: Tachometer, Digital Info Center, Cruise Control, Privacy Glass/Tinted Windows, Tilt Steering Wheel, Steering Radio Controls, Power Locks, ABS Brakes, Fog Lights, Traction Control, Intermittent Wipers, Side Airbags, Dynamic Stability, Keyless Entry, Rear Defogger, Security System Cruise Control, Tinted Windows, Power Door Locks, Tachometer, Digital Info Center, Tilt Steering Wheel, Steering Wheel Radio Controls, Side Airbags, Keyless Entry, Security System, ABS Brakes, Traction Control, Dynamic Stability, Rear Defogger, Fog Lights, Intermittent Wipers, Alloy Wheels, Leather/Suede Interior Surface, 3.8L Twin-Turbocharged V8, Rear-Wheel Drive, Carbon Fiber Racing Seats -inc: Regular or touring fit, 2-Way Driver Seat -inc: Manual Fore/Aft Movement, Fixed Passenger Seat, Fixed Rear Windows, Sport Alcantara Simulated Suede Steering Wheel, Front Cupholder, Proximity Key For Doors And Push Button Start, Valet Function, Remote Releases -Inc: Power Cargo Access.",
+                "2019 McLaren 600LT Coupe",
+                new ArrayList<String>(Arrays.asList("sc3_1", "sc3_2", "sc3_3")),
+                true,
+                323);
+        Supercar supercar4 = new Supercar(241900f,
+                "Our very last DB11 Volante. Very unique color combination that must be seen! Please inquire with us as the availability of this exceptional automobile!",
+                "2020 Aston Martin DB11 Volante",
+                new ArrayList<String>(Arrays.asList("sc4_1", "sc4_2", "sc4_3")),
+                true,
+                339
+        );
+        Supercar supercar5 = new Supercar(1499000f,
+                "*DESIRED FEATURES:* AWD, Rear Camera, Navigation, Leather, Bluetooth, SiriusXM, Premium Audio, Alloy Wheels.This all wheel drive 2015 Porsche 918 Spyder 2dr Roadster is one of those used cars Columbus, OH shoppers seek out for its Liquid Metal Silver exterior with a Onyx Black/acid Green Interior. With 3,643 miles this 2015 918 Spyder with a 8cyl, 4.6l, hp engine is your best buy near Columbus, OH.",
+                "2015 Porsche 918 Spyder Base",
+                new ArrayList<String>(Arrays.asList("sc5_1", "sc5_2", "sc5_3")),
+                true,
+                339);
         Supercar supercar6 = new Supercar();
         Supercar supercar7 = new Supercar();
         Supercar supercar8 = new Supercar();
