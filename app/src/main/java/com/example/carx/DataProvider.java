@@ -53,16 +53,16 @@ public class DataProvider {
                 true);
         Jdm jdm2 = new Jdm(985000f,
                 "The cleanest Lexus LFA you have ever seen with only 417 km\n" +
-                "\n" +
-                "The car is in almost brand new condition\n" +
-                "\n" +
-                "Absolute Super Red color\n" +
-                "\n" +
-                "Factory stock\n" +
-                "\n" +
-                "Comes with the books\n" +
-                "\n" +
-                "NEGOTIATE THE BEST PRICE",
+                        "\n" +
+                        "The car is in almost brand new condition\n" +
+                        "\n" +
+                        "Absolute Super Red color\n" +
+                        "\n" +
+                        "Factory stock\n" +
+                        "\n" +
+                        "Comes with the books\n" +
+                        "\n" +
+                        "NEGOTIATE THE BEST PRICE",
                 "Lexus LFA",
                 new ArrayList<String>(Arrays.asList("jdm2_1", "jdm2_2", "jdm2_3")),
                 false,
@@ -73,7 +73,7 @@ public class DataProvider {
                 new ArrayList<String>(Arrays.asList("jdm3_1", "jdm3_2", "jdm3_3")),
                 false,
                 true
-                );
+        );
         Jdm jdm4 = new Jdm(42500f,
                 "Absolutely beautiful and low mileage Nissan Skyline GT-R R33 in midnight purple color!",
                 "Nissan Skyline GTR R33",
@@ -81,17 +81,98 @@ public class DataProvider {
                 false,
                 true);
         Jdm jdm5 = new Jdm(85000f,
-                "Extrememly unique and beautifully upgraded RX7 Veilside Fast and Furios style",
+                "Extremely unique and beautifully upgraded RX7 Veilside Fast and Furious style",
                 "Mazda RX Veilside",
                 new ArrayList<String>(Arrays.asList("jdm5_1", "jdm5_2", "jdm5_3")),
                 false,
                 true
         );
-        Jdm jdm6 = new Jdm();
-        Jdm jdm7 = new Jdm();
-        Jdm jdm8 = new Jdm();
-        Jdm jdm9 = new Jdm();
-        Jdm jdm10 = new Jdm();
+        Jdm jdm6 = new Jdm(18200f,
+                "182,048 kms\n" +
+                        "\n" +
+                        "Carbing Okuyama shift knob\n" +
+                        "\n" +
+                        "Momo steering wheel\n" +
+                        "\n" +
+                        "Recaro seats\n" +
+                        "\n" +
+                        "Enkei wheels\n" +
+                        "\n" +
+                        "Tein suspension[Front & rear strut bars\n" +
+                        "\n" +
+                        "Aftermarket exhaust\n" +
+                        "\n" +
+                        "HKS intake",
+                "Mitsubishi Lancer EVO ",
+                new ArrayList<String>(Arrays.asList("jdm6_1", "jdm6_2", "jdm6_3")),
+                false,
+                true);
+        Jdm jdm7 = new Jdm(18500f,
+                "Super clean, comes with maintenance records\n" +
+                        "\n" +
+                        "No mechanical issues\n" +
+                        "\n" +
+                        "No accidents\n" +
+                        "\n" +
+                        "Well maintained, in a great running condition\n" +
+                        "\n" +
+                        "Glass T bar roof\n" +
+                        "\n",
+                "Toyota MR2 GT",
+                new ArrayList<String>(Arrays.asList("jdm7_1", "jdm7_2", "jdm7_3")),
+                false,
+                true);
+        Jdm jdm8 = new Jdm(330000f,
+                "One of the rarest JDM cars - Honda NSX NA2 Type S\n" +
+                        "\n" +
+                        "Clean and well maintained \n" +
+                        "\n" +
+                        "Stock\n" +
+                        "\n" +
+                        "Low mileage\n" +
+                        "\n" +
+                        "No accidents \n" +
+                        "\n" +
+                        "No mechanical issues",
+                "Honda NSX type S",
+                new ArrayList<String>(Arrays.asList("jdm8_1", "jdm8_2", "jdm8_3")),
+                false,
+                false);
+        Jdm jdm9 = new Jdm(24500f,
+                "Clean and well maintained Farilady Z Twin Turbo with 5 speed M/T\n" +
+                        "\n" +
+                        "Comes with a few very nice aftermarket upgrades",
+                "Nissan Fairlady Z TT",
+                new ArrayList<String>(Arrays.asList("jdm9_1", "jdm9_2", "jdm9_3")),
+                false,
+                true
+        );
+        Jdm jdm10 = new Jdm(24500f,
+                "Clean and nicely modified Nissan 180SX SR20DET\n" +
+                        "\n" +
+                        "Accidents free\n" +
+                        "\n" +
+                        "Trust intercooler\n" +
+                        "\n" +
+                        "Trust radiator\n" +
+                        "\n" +
+                        "TOMEI Exhaust manifold\n" +
+                        "\n" +
+                        "Reinforced clutch\n" +
+                        "\n" +
+                        "LSD\n" +
+                        "\n" +
+                        "D-Max Tie rod\n" +
+                        "\n" +
+                        "Front/rear tower bars\n" +
+                        "\n" +
+                        "Body aero kit\n" +
+                        "\n" +
+                        "8 points roll cage",
+                "Nissan 180SX",
+                new ArrayList<String>(Arrays.asList("jdm10_1", "jdm10_2", "jdm10_3")),
+                false,
+                true);
 
         //SUPERCARS
         Supercar supercar1 = new Supercar();
