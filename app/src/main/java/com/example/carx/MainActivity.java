@@ -19,14 +19,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Contact> contacts;
+    ArrayList<Cars> contacts;
+    DataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.dataProvider = new DataProvider();
         ActionBar actionBar = getSupportActionBar();
-
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
 
         // Initialize contacts
-        contacts = Contact.createContactsList(5);
+        contacts = DataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
         ContactsAdapter adapter = new ContactsAdapter(contacts);
         // Attach the adapter to the recyclerview to populate items

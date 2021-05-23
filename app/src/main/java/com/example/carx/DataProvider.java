@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class DataProvider {
 
-    ArrayList<Cars> totalCars, allSuperCars, allJdms, allSuvs;
+    static ArrayList<Cars>  totalCars, allSuperCars, allJdms, allSuvs;
 
     public DataProvider() {
 
@@ -206,34 +206,36 @@ public class DataProvider {
                 new ArrayList<String>(Arrays.asList("sc5_1", "sc5_2", "sc5_3")),
                 true,
                 339);
-        Supercar supercar6 = new Supercar();
-        Supercar supercar7 = new Supercar();
-        Supercar supercar8 = new Supercar();
-        Supercar supercar9 = new Supercar();
-        Supercar supercar10 = new Supercar();
-
-        //SUVS
-        Suv suv1 = new Suv();
-        Suv suv2 = new Suv();
-        Suv suv3 = new Suv();
-        Suv suv4 = new Suv();
-        Suv suv5 = new Suv();
-        Suv suv6 = new Suv();
-        Suv suv7 = new Suv();
-        Suv suv8 = new Suv();
-        Suv suv9 = new Suv();
-        Suv suv10 = new Suv();
-
+//        Supercar supercar6 = new Supercar();
+//        Supercar supercar7 = new Supercar();
+//        Supercar supercar8 = new Supercar();
+//        Supercar supercar9 = new Supercar();
+//        Supercar supercar10 = new Supercar();
+//
+//        //SUVS
+//        Suv suv1 = new Suv();
+//        Suv suv2 = new Suv();
+//        Suv suv3 = new Suv();
+//        Suv suv4 = new Suv();
+//        Suv suv5 = new Suv();
+//        Suv suv6 = new Suv();
+//        Suv suv7 = new Suv();
+//        Suv suv8 = new Suv();
+//        Suv suv9 = new Suv();
+//        Suv suv10 = new Suv();
         this.totalCars = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10,
-                supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10,
-                suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
+                supercar1, supercar2, supercar3, supercar4, supercar5));
+//        this.totalCars = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10,
+//                supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10,
+//                suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
 
         this.allJdms = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10));
-        this.allSuvs = new ArrayList<Cars>(Arrays.asList(suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
-        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
+//        this.allSuvs = new ArrayList<Cars>(Arrays.asList(suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
+        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5));
+//        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
-    public ArrayList<Cars> getTopPicks(int num_topPicks) {
+    public static ArrayList<Cars> getTopPicks(int num_topPicks) {
         ArrayList<Cars> topPicks = new ArrayList<Cars>();
         for (num_topPicks = 0; num_topPicks < totalCars.size(); num_topPicks++) {
             int index = (int) (Math.random() * num_topPicks);

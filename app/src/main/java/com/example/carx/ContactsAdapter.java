@@ -35,7 +35,7 @@ public class ContactsAdapter extends
     @Override
     public void onBindViewHolder(ContactsAdapter.ViewHolder holder, int position) {
         // Get the data model based on position
-        Contact contact = mContacts.get(position);
+        Cars contact = mContacts.get(position);
 
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
@@ -65,10 +65,10 @@ public class ContactsAdapter extends
         }
     }
     // Store a member variable for the contacts
-    private List<Contact> mContacts;
+    private List<Cars> mContacts;
 
     // Pass in the contact array into the constructor
-    public ContactsAdapter(List<Contact> contacts) {
+    public ContactsAdapter(List<Cars> contacts) {
         mContacts = contacts;
     }
 }
