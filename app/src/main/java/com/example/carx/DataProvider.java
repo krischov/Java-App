@@ -261,10 +261,8 @@ public class DataProvider {
                 if (!matched) {
                     usedIndexes.add(index);
                     chosen = true;
-                    Log.d("Testing", "Chosen is true");
                 }
             }
-            Log.d("Testing", "testing B");
             topPicks.add(totalCars.get(index));
         }
         return topPicks;
