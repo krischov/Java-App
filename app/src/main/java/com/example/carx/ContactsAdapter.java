@@ -1,10 +1,13 @@
 package com.example.carx;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +42,9 @@ public class ContactsAdapter extends
 
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
+        ImageView imageView = holder.imageCarView;
         textView.setText(contact.getName());
+        imageView.setImageURI(Uri.parse("android.resource://com.example.carx/drawable/"+ contact.photos.get(0)));
     }
 
     // Returns the total count of items in the list
@@ -54,13 +59,14 @@ public class ContactsAdapter extends
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView nameTextView;
+        public ImageView imageCarView;
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-
+            imageCarView = itemView.findViewById(R.id.car_image);
             nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
         }
     }
