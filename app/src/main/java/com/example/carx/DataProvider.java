@@ -1,11 +1,13 @@
 package com.example.carx;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DataProvider {
 
-    static ArrayList<Cars>  totalCars, allSuperCars, allJdms, allSuvs;
+    static ArrayList<Cars> totalCars, allSuperCars, allJdms, allSuvs;
 
     public DataProvider() {
 
@@ -237,8 +239,32 @@ public class DataProvider {
 
     public static ArrayList<Cars> getTopPicks(int num_topPicks) {
         ArrayList<Cars> topPicks = new ArrayList<Cars>();
-        for (num_topPicks = 0; num_topPicks < totalCars.size(); num_topPicks++) {
-            int index = (int) (Math.random() * num_topPicks);
+        ArrayList<Integer> usedIndexes = new ArrayList();
+
+        for (int i = 0; i < num_topPicks; i++) {
+            boolean chosen = false;
+            int index = 0;
+            while (!chosen) {
+//              generate a random index
+                index = (int) (Math.random() * totalCars.size());
+                boolean matched = false;
+
+//              check if the random index has already been used
+                for (int j = 0; j < usedIndexes.size(); j++) {
+                    int usedIndex = usedIndexes.get(j);
+                    if (index == usedIndex) {
+                        matched = true;
+                        break;
+                    }
+                }
+//              if there is no match, then add the car to top picks
+                if (!matched) {
+                    usedIndexes.add(index);
+                    chosen = true;
+                    Log.d("Testing", "Chosen is true");
+                }
+            }
+            Log.d("Testing", "testing B");
             topPicks.add(totalCars.get(index));
         }
         return topPicks;
