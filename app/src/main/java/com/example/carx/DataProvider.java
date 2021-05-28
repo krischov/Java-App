@@ -260,29 +260,111 @@ public class DataProvider {
                 new ArrayList <String>(Arrays.asList("sc10_1", "sc10_2", "sc10_3")),
                 true,
                 342
-                );
-//
+        );
+
 //        //SUVS
-//        Suv suv1 = new Suv();
-//        Suv suv2 = new Suv();
-//        Suv suv3 = new Suv();
-//        Suv suv4 = new Suv();
-//        Suv suv5 = new Suv();
-//        Suv suv6 = new Suv();
-//        Suv suv7 = new Suv();
-//        Suv suv8 = new Suv();
-//        Suv suv9 = new Suv();
-//        Suv suv10 = new Suv();
+        Suv suv1 = new Suv(14000f,
+                "2007 Porsche Cayenne which has been well looked after. Has many features such as Climate Air-Con, Electric Seats, Drivers with 3 memories, Heated Steering Wheel and Front seats; Remote Door Locking, 4.8 Quad Cam 32 Valve V8 Engine and 10 Airbags",
+                "2007 Porsche Cayenne S",
+                new ArrayList <String>(Arrays.asList("suv1_1", "suv1_2", "suv1_3")),
+                false,
+                218.1f
+        );
+
+        Suv suv2 = new Suv(30000f,
+                "2018 Model, good condition, search MAXDA CX-5 for more information.",
+                "Maxda CX-5",
+                new ArrayList <String>(Arrays.asList("suv2_1", "suv2_2", "suv2_3")),
+                false,
+                193f
+        );
+
+        Suv suv3 = new Suv(32790f,
+                "Incredibly spacious for people and cargo, has a powerful V-6 and comes with a slew of safety features. Excellent for the family.",
+                "2021 Honda Passport",
+                new ArrayList <String>(Arrays.asList("suv3_1", "suv3_2", "suv3_3")),
+                true,
+                190f
+        );
+
+        Suv suv4 = new Suv(41000f,
+                "A large high quality 7-seater SUV.",
+                "2021 Kia Sorento Hybrid",
+                new ArrayList <String>(Arrays.asList("suv4_1", "suv4_2", "suv4_3")),
+                true,
+                208.3f
+        );
+
+        Suv suv5 = new Suv(7000f,
+                "Beautifully looked after 2008 Hyundai Santa Fe AWD\n" +
+                        "\n" +
+                        "* Tires, battery and door has been replaced.\n" +
+                        "\n" +
+                        "* Working air cooler.\n" +
+                        "\n" +
+                        "* Trust radiator\n" +
+                        "\n" +
+                        "* Minor to little dents and scratches\n" +
+                        "\n" +
+                        "Drives like it is new!",
+                "2008 Hyundai Santa Fe",
+                new ArrayList <String>(Arrays.asList("suv5_1", "suv5_2", "suv5_3")),
+                false,
+                206f
+        );
+
+        Suv suv6 = new Suv(55190f,
+                "The Model Y is designed to be the safest vehicle in its class, boasting multiple safety features such as the low centre of gravity\n"
+                + "The Model Y also presents the user with a slew of amazing features such as autopilot, a massive range on a single charge and seating for five.",
+                "Tesla Model Y 2021 Performance",
+                new ArrayList <String>(Arrays.asList("suv6_1", "suv6_2", "suv6_3")),
+                true,
+                168f
+        );
+
+        Suv suv7 = new Suv(45000f,
+                "With a focus on interior space and comfort, plus an eye toward splashy technology features on some trims, the Atlas Cross Sport is one of the best offerings in its class.",
+                "2020 Volkswagen Atlas Cross Sport",
+                new ArrayList <String>(Arrays.asList("suv7_1", "suv7_2", "suv7_3")),
+                true,
+                203f
+        );
+
+        Suv suv8 = new Suv(10000f,
+                "A compact, nimble BMW that feels solid on the road. There is ample cargo space and the car is an excellent choice for day to day use!",
+                "2011 BMW X1",
+                new ArrayList <String>(Arrays.asList("suv8_1", "suv8_2", "suv8_3")),
+                false,
+                194.1f
+        );
+
+        Suv suv9 = new Suv(79900f,
+                "Own the road. Share the Planet. The dynamic Scandinavian SUV that protects what's important.",
+                "Volvo XC60 2021",
+                new ArrayList <String>(Arrays.asList("suv9_1", "suv9_2", "suv9_3")),
+                true,
+                216.2f
+        );
+
+        Suv suv10 = new Suv(5000f,
+                "Great usage and still going strong\n."
+                        + "\n"
+                        + "4WD. "
+                        + "\n"
+                        + "NOTE: Has had 5+ owners.",
+                "2011 Great Wall X240",
+                new ArrayList <String>(Arrays.asList("suv10_1", "suv10_2", "suv10_3")),
+                false,
+                180.6f
+        );
+
         this.totalCars = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10,
-                supercar1, supercar2, supercar3, supercar4, supercar5));
-//        this.totalCars = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10,
-//                supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10,
-//                suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
+                supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10,
+                suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
 
         this.allJdms = new ArrayList<Cars>(Arrays.asList(jdm1, jdm2, jdm3, jdm4, jdm5, jdm6, jdm7, jdm8, jdm9, jdm10));
-//        this.allSuvs = new ArrayList<Cars>(Arrays.asList(suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
-        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5));
-//        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
+        this.allSuvs = new ArrayList<Cars>(Arrays.asList(suv1, suv2, suv3, suv4, suv5, suv6, suv7, suv8, suv9, suv10));
+        this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
     public static ArrayList<Cars> getTopPicks(int num_topPicks) {

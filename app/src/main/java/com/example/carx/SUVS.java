@@ -3,9 +3,9 @@ package com.example.carx;
 import java.util.ArrayList;
 
 class Suv extends Cars{
-    Float groundClearance;
+    float groundClearance;
 
-    public Suv(Float price, String description, String name, ArrayList<String> photos, boolean factoryNew, Float groundClearance){
+    public Suv(Float price, String description, String name, ArrayList<String> photos, boolean factoryNew, float groundClearance){
         super(price, description, name, photos, factoryNew);
         this.groundClearance = groundClearance;
         setCarType(CarID.SUV);
