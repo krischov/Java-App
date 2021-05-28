@@ -182,19 +182,25 @@ public class DataProvider {
                 , "2015 Lamborghini Huracan LP610-4",
                 new ArrayList<String>(Arrays.asList("sc1_1", "sc1_2", "sc1_3")),
                 true,
-                320);
+                320
+        );
+
         Supercar supercar2 = new Supercar(272700f,
                 "Ferrari of Newport Beach is proud to present this 2016 Ferrari 488 Spider in Rosso Corsa with Beige Tradizione interior. Options include: Apple Carplay, Adaptive Frontlight System, Leather Upholst. Seat Backrest, Yellow Brake Calipers, Carbon Fiber Rear Air-Ducts, Carbon Fiber Fog Lamp, Carbon Fiber Driver Zone + LED's, Carbon Fiber Central Bridge, Central Tunnel in Leather, Dash Inserts Carbon Fiber, Suspension Lifter, Cavallino Stitched on Headrest, Sport Exhaust System, Colored Mats with Logo, Scuderia Ferrari Shields, Parking Camera, Front and Rear Parking Sensors, 20 Forged Dark Painted Rims, Yellow Rev. Counter, Full Electric Seats, Premium Hi-Fi System and Colored Special Stitching O.R.  "
                 , "2016 Ferrari 488 Spider",
                 new ArrayList<String>(Arrays.asList("sc2_1", "sc2_2", "sc2_3")),
                 true,
-                333);
+                333
+        );
+
         Supercar supercar3 = new Supercar(259900f,
                 "Own this CARFAX 1-Owner and Buyback Guarantee Qualified 600LT today, worry free! WARRANTY A Factory Warranty is included with this vehicle. Contact seller for more information. EXTREMELY LOW MILES! Get the best value from your vehicle purchase. This 2019 boasts an extremely low 927 miles! LOADED WITH VALUE! This McLaren 600LT comes equipped with: Tachometer, Digital Info Center, Cruise Control, Privacy Glass/Tinted Windows, Tilt Steering Wheel, Steering Radio Controls, Power Locks, ABS Brakes, Fog Lights, Traction Control, Intermittent Wipers, Side Airbags, Dynamic Stability, Keyless Entry, Rear Defogger, Security System Cruise Control, Tinted Windows, Power Door Locks, Tachometer, Digital Info Center, Tilt Steering Wheel, Steering Wheel Radio Controls, Side Airbags, Keyless Entry, Security System, ABS Brakes, Traction Control, Dynamic Stability, Rear Defogger, Fog Lights, Intermittent Wipers, Alloy Wheels, Leather/Suede Interior Surface, 3.8L Twin-Turbocharged V8, Rear-Wheel Drive, Carbon Fiber Racing Seats -inc: Regular or touring fit, 2-Way Driver Seat -inc: Manual Fore/Aft Movement, Fixed Passenger Seat, Fixed Rear Windows, Sport Alcantara Simulated Suede Steering Wheel, Front Cupholder, Proximity Key For Doors And Push Button Start, Valet Function, Remote Releases -Inc: Power Cargo Access.",
                 "2019 McLaren 600LT Coupe",
                 new ArrayList<String>(Arrays.asList("sc3_1", "sc3_2", "sc3_3")),
                 true,
-                323);
+                323
+        );
+
         Supercar supercar4 = new Supercar(241900f,
                 "Our very last DB11 Volante. Very unique color combination that must be seen! Please inquire with us as the availability of this exceptional automobile!",
                 "2020 Aston Martin DB11 Volante",
@@ -207,12 +213,54 @@ public class DataProvider {
                 "2015 Porsche 918 Spyder Base",
                 new ArrayList<String>(Arrays.asList("sc5_1", "sc5_2", "sc5_3")),
                 true,
-                339);
-//        Supercar supercar6 = new Supercar();
-//        Supercar supercar7 = new Supercar();
-//        Supercar supercar8 = new Supercar();
-//        Supercar supercar9 = new Supercar();
-//        Supercar supercar10 = new Supercar();
+                339
+        );
+
+        Supercar supercar6 = new Supercar(157868f,
+                "Has a 3.8 litre twin turbo V6 producing 562bhp and 470lb ft with a 0-62mph of 2.7 secs.\n" +
+                    "Has many features such as Apple Carplay, review camera, navigation system, GTR, multi-function display, leather interior and a Bose sound system. Also has many safety and driver assist features: vehicle dynamic control, traction control, and anti-lock braking system.",
+                "2021 Nissan R35 GTR",
+                new ArrayList <String>(Arrays.asList("sc6_1", "sc6_2", "sc6_3")),
+                true,
+                315
+        );
+
+        Supercar supercar7 = new Supercar(200000f,
+                "375kW/470Nm 4.0 litre flat six engine with the option of six-speed manual or seven speed PDK dual clutch automatic transmission. 0-100km/h in 3.4 seconds.\n"
+                        + "\n" + "Standard features include tinted LED headlights, rear parking sensors, auto dimming mirrors with rain sensors, reversing camera, front axle lift system, tyre sealant, onboard electric air compressor, DAB+ digital radio and metallic paint.",
+                "2021 Porsche 911 GT3",
+                new ArrayList <String>(Arrays.asList("sc7_1", "sc7_2", "sc7_3")),
+                false,
+                320
+        );
+
+        Supercar supercar8 = new Supercar(4029245f,
+                "The absolute pinnacle.",
+                "2021 Bugatti Chiron",
+                new ArrayList <String>(Arrays.asList("sc8_1", "sc8_2", "sc8_3")),
+                true,
+                489
+        );
+
+        Supercar supercar9 = new Supercar(298724f,
+                "**BRAND NEW**\n" + "Mid-mounted 602hp naturally aspirated 5.2 litre V-10. Seven speed dual clutch automatic and all-wheel drive. 0-60mph in 2.5 seconds.\n" + "**FEATURES**\n" + "8.4-inch touchscreen with audio system, climate settings, Apple Carplay, and Amazon Alexa integration.",
+                "2021 Lamborghini Huracan",
+                new ArrayList <String>(Arrays.asList("sc9_1", "sc9_2", "sc9_3")),
+                true,
+                325
+        );
+
+        Supercar supercar10 = new Supercar(418516f,
+                "High performance vehicle achieving 0-60mph in 2.7 seconds. \n"
+                + "Has a luxurious Carbon fibre tub to limit weight and ensure rigidity with two seat cabin. \n"
+                + "\n"
+                + "Features include:\n"
+                + "Vertically oriented 7.0-inch touchscreen that includes Bluetooth, four speaker audio system and two USB ports. Front and rear parking sensors, front end lift system and backup camera.",
+                "2020 Mclaren 720s",
+                new ArrayList <String>(Arrays.asList("sc10_1", "sc10_2", "sc10_3")),
+                true,
+                342
+                );
 //
 //        //SUVS
 //        Suv suv1 = new Suv();
