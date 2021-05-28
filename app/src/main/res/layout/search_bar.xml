@@ -31,7 +31,7 @@
                     android:drawableLeft="@drawable/ic_baseline_dehaze_24"
                     />
                 <EditText
-                    android:id="@+id/editMobileNo"
+                    android:id="@+id/search_for_cars"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="40dp"
@@ -45,11 +45,13 @@
                     android:gravity="center" >
                 </EditText>
                 <Button
+                    android:id="@+id/search_button"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:onClick="onSearchQuery"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -90,6 +92,13 @@
                     android:buttonTint="@color/black"
                     android:text="JDM"
                     android:layout_height="match_parent"/>
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lv1"
+                    android:divider="#ad5"
+                    android:dividerHeight="2dp"
+                    android:layout_below="@+id/searchView"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
