@@ -15,6 +15,9 @@ public class SearchCarsAdapter extends ArrayAdapter<Cars> {
     public SearchCarsAdapter(Context context, ArrayList<Cars> cars) {
         super(context, 0, cars);
     }
+    public SearchCarsAdapter(Context context) {
+        super(context, 0);
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -65,10 +66,33 @@ public class MainActivity extends AppCompatActivity {
         searchView =  findViewById(R.id.search_for_cars);
         searchButton = findViewById(R.id.search_button);
 
-        searchAdapter = new SearchCarsAdapter(this, totalCars);
+        searchAdapter = new SearchCarsAdapter(this);
 // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.lv1);
         listView.setAdapter(searchAdapter);
+
+        ListView lv = (ListView)findViewById(R.id.lv1);  // your listview inside scrollview
+        lv.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
     }
 
     public void toListActivity(View view) {
