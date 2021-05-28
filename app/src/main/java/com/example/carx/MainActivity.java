@@ -18,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     EditText searchView;
     Button searchButton;
     SearchCarsAdapter searchAdapter;
+    CheckBox suv, jdm, sc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +65,18 @@ public class MainActivity extends AppCompatActivity {
         //set search view results display
         totalCars = DataProvider.getTotalCars();
         listView = (ListView) findViewById(R.id.lv1);
-        searchView =  findViewById(R.id.search_for_cars);
+        searchView = findViewById(R.id.search_for_cars);
         searchButton = findViewById(R.id.search_button);
-
+        suv = findViewById(R.id.suv_cb);
+        jdm = findViewById(R.id.jdm_cb);
+        sc = findViewById(R.id.sc_cb);
         searchAdapter = new SearchCarsAdapter(this);
 // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.lv1);
         listView.setAdapter(searchAdapter);
 
-        ListView lv = (ListView)findViewById(R.id.lv1);  // your listview inside scrollview
-        lv.setOnTouchListener(new ListView.OnTouchListener() {
+        // your listview inside scrollview
+        listView.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
@@ -99,26 +103,45 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListActivity.class);
         this.startActivity(intent);
     }
-    public void onSearchQuery(View view){
+
+    public void onSearchQuery(View view) {
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
-        boolean searchFound = false;
-        for(int i = 0 ; i < totalCars.size(); i++){
+
+        for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name;
-            if(name.contains(search)){
-                searchedCars.add(car);
+            if (name.contains(search)) {
+                if (suv.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUV) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (jdm.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.JDM) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (sc.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                    searchedCars.add(car);
+                }
             }
         }
-        if(searchedCars.size() > 0){
+        if (searchedCars.size() > 0) {
             searchAdapter = new SearchCarsAdapter(this, searchedCars);
 // Attach the adapter to a ListView
             ListView listView = (ListView) findViewById(R.id.lv1);
             listView.setAdapter(searchAdapter);
-        }else{
-            Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(MainActivity.this, "No Match found", Toast.LENGTH_LONG).show();
         }
     }
+
     public void toggleFilters(View view) {
         LinearLayout searchFilters = findViewById(R.id.search_filters);
         if (searchFilters.getVisibility() == View.GONE) {

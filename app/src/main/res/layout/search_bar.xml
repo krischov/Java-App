@@ -88,18 +88,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:buttonTint="@color/black"
+                    android:id="@+id/suv_cb"
                     android:text="SUV" />
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:buttonTint="@color/black"
+                    android:id="@+id/sc_cb"
                     android:text="SUPERCAR" />
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:buttonTint="@color/black"
+                    android:id="@+id/jdm_cb"
                     android:text="JDM" />
 
                 <ListView
