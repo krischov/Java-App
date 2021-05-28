@@ -107,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
     public void onSearchQuery(View view) {
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
-
+        LinearLayout searchFilters = findViewById(R.id.search_filters);
+        searchFilters.setVisibility(View.VISIBLE);
+        searchFilters.setAlpha(0);
+        searchFilters.animate()
+                .alpha(1f)
+                .start();
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name;
