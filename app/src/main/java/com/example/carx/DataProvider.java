@@ -399,7 +399,7 @@ public class DataProvider {
     }
 
 
-    public ArrayList<Cars> getTotalCars() {
+    public static ArrayList<Cars> getTotalCars() {
         return totalCars;
     }
 
