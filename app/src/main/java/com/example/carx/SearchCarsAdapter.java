@@ -44,13 +44,12 @@ public class SearchCarsAdapter extends ArrayAdapter<Cars> {
         carName.setText(car.name);
         carImage.setImageURI(Uri.parse("android.resource://com.example.carx/drawable/"+ car.photos.get(0)));
         // Return the completed view to render on screen
-        viewCar.setOnTouchListener(new View.OnTouchListener(){
+        viewCar.setOnClickListener(new View.OnClickListener(){
             @Override
-            public boolean onTouch(View v, MotionEvent motion) {
+            public void onClick(View v) {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
                 Intent intent = new Intent(c, DetailsActivity.class);
                 c.startActivity(intent);
-                return true;
             }
         });
         return convertView;
