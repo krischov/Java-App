@@ -26,7 +26,29 @@ public class DetailsActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
 
-        TextView text = (TextView) findViewById(R.id.test);
-        text.setText(carToShow.description);
+        String carType;
+        if(carToShow.getCarType() == Cars.CarID.SUV) {
+            carType = "SUV";
+        }
+        else if (carToShow.getCarType() == Cars.CarID.JDM){
+            carType = "JDM";
+        }
+        else{
+            carType = "SUPERCAR";
+        }
+
+        TextView Name = (TextView) findViewById(R.id.NAME);
+        Name.setText(carToShow.name);
+
+        TextView Price = (TextView) findViewById(R.id.PRICE);
+        Price.setText(carToShow.price.toString());
+
+        TextView Category = (TextView) findViewById(R.id.PRICE);
+        Price.setText("NZD$"+ carToShow.price.toString());
+
+        TextView Desc = (TextView) findViewById(R.id.DESCRIPTION);
+        Desc.setText(carToShow.description);
+
+
     }
 }

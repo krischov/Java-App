@@ -46,13 +46,12 @@
                 android:paddingBottom="2dp"
                 android:text="Descripton" />
 
-        <TextView
-            android:id="@+id/DESCRIPTION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingBottom="2dp"
-            android:text="TextView" />
-
+            <TextView
+                android:id="@+id/DESCRIPTION"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingBottom="2dp"
+                android:text="Descripton" />
         </LinearLayout>
     </ScrollView>
