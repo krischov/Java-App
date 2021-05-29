@@ -1,5 +1,6 @@
 package com.example.carx;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -18,6 +19,7 @@ public class ListActivity extends AppCompatActivity {
 
     ArrayList<Cars> listCars;
     DataProvider dataProvider;
+    ListActivity LA;
 
 
     @Override
@@ -26,6 +28,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.list_activity);
         this.dataProvider = new DataProvider();
         ActionBar actionBar = getSupportActionBar();
+        LA = this;
 
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
@@ -47,7 +50,7 @@ public class ListActivity extends AppCompatActivity {
                 Cars detailCar = (Cars) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
                 intent.putExtra("Car", listCars.get(position));
-                startActivity(intent);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
             }
         });
     }

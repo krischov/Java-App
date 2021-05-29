@@ -125,12 +125,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/white" />
         </RelativeLayout>
-        <Button
-            android:id="@+id/to_list_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toListActivity"
-            android:text="To List Activity" />
     </LinearLayout>
 
 </ScrollView>
