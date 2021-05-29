@@ -44,14 +44,11 @@ public class ListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toDetailsActivity(view, position);
+                Cars detailCar = (Cars) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
+                intent.putExtra("Car", listCars.get(position));
+                startActivity(intent);
             }
         });
     }
-    public void toDetailsActivity(View view, int position) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra("my.package.dataToPass", (Parcelable) listCars.get(position));
-        this.startActivity(intent);
-    }
-
 }
