@@ -7,7 +7,6 @@
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
     android:background="@drawable/listview_border"
-
     android:layout_height="match_parent">
 
 
