@@ -6,7 +6,7 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
-    android:background="@drawable/textview_border"
+    android:background="@drawable/listview_border"
 
     android:layout_height="match_parent">
 
@@ -18,7 +18,7 @@
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:background="@layout/image_view_border"
+        android:background="@drawable/listview_border"
         android:cropToPadding="true"
         android:src="@drawable/suv" />
 
