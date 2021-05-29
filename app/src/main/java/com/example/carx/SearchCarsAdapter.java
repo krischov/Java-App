@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,9 +21,11 @@ import java.util.ArrayList;
 
 public class SearchCarsAdapter extends ArrayAdapter<Cars> {
     private Context c;
+    private ArrayList<Cars> Cars;
     public SearchCarsAdapter(Context context, ArrayList<Cars> cars) {
         super(context, 0, cars);
         this.c = context;
+        this.Cars = cars;
     }
     public SearchCarsAdapter(Context context) {
         super(context, 0);
@@ -47,8 +51,8 @@ public class SearchCarsAdapter extends ArrayAdapter<Cars> {
         viewCar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
                 Intent intent = new Intent(c, DetailsActivity.class);
+                intent.putExtra("Car", Cars.get(position));
                 c.startActivity(intent);
             }
         });
