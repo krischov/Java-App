@@ -11,6 +11,7 @@
 
 
         <androidx.viewpager.widget.ViewPager
+            android:id="@+id/carPIC"
             android:layout_width="match_parent"
             android:layout_height="300dp"></androidx.viewpager.widget.ViewPager>
 
@@ -18,39 +19,51 @@
                 android:id="@+id/NAME"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:textSize="30dp"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/PRICE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/CATEGORY"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
+                android:textSize="20dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/TDESCRIPTION"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
                 android:text="Descripton" />
 
             <TextView
                 android:id="@+id/DESCRIPTION"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
                 android:text="Descripton" />
         </LinearLayout>
