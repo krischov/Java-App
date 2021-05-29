@@ -99,12 +99,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void toListActivity(View view) {
-        Intent intent = new Intent(this, ListActivity.class);
-        intent.putExtra("Cars", totalCars);
-        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-    }
-
     public void toSUVListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSUVs);
