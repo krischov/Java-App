@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         rvContacts.setAdapter(adapter);
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
         // That's all!
 
         //set search view results display
@@ -74,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.lv1);
         listView.setAdapter(searchAdapter);
-
         // your listview inside scrollview
         listView.setOnTouchListener(new ListView.OnTouchListener() {
             @Override

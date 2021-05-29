@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Create the basic adapter extending from RecyclerView.Adapter
@@ -48,6 +49,7 @@ public class ContactsAdapter extends
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(c, DetailsActivity.class);
+                intent.putExtra("Car", contact);
                 c.startActivity(intent);
             }
         });
