@@ -407,7 +407,7 @@ public class DataProvider {
         this.totalCars = totalCars;
     }
 
-    public ArrayList<Cars> getAllHyperCars() {
+    public static ArrayList<Cars> getAllHyperCars() {
         return allSuperCars;
     }
 
@@ -415,7 +415,7 @@ public class DataProvider {
         this.allSuperCars = allHyperCars;
     }
 
-    public ArrayList<Cars> getAllJdms() {
+    public static ArrayList<Cars> getAllJdms() {
         return allJdms;
     }
 
@@ -423,7 +423,7 @@ public class DataProvider {
         this.allJdms = allJdms;
     }
 
-    public ArrayList<Cars> getAllSuvs() {
+    public static ArrayList<Cars> getAllSuvs() {
         return allSuvs;
     }
 

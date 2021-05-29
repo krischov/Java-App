@@ -33,9 +33,9 @@ public class ListActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
-
+        Intent a = getIntent();
+        ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
         ListView list = (ListView) findViewById(R.id.carList);
-        listCars = DataProvider.getTotalCars();
 
         //custrom array adaptor
         CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
