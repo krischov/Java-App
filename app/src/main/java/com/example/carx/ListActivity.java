@@ -2,6 +2,7 @@ package com.example.carx;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,12 +44,13 @@ public class ListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toDetailsActivity(view);
+                toDetailsActivity(view, position);
             }
         });
     }
-    public void toDetailsActivity(View view) {
+    public void toDetailsActivity(View view, int position) {
         Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("my.package.dataToPass", (Parcelable) listCars.get(position));
         this.startActivity(intent);
     }
 
