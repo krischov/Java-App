@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -101,23 +102,23 @@ public class MainActivity extends AppCompatActivity {
     public void toListActivity(View view) {
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", totalCars);
-        this.startActivity(intent);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void toSUVListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSUVs);
-        this.startActivity(intent);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
     public void toJDMListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allJDMs);
-        this.startActivity(intent);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
     public void toSupercarListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSupercars);
-        this.startActivity(intent);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void onSearchQuery(View view) {
