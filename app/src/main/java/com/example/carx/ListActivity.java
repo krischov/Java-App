@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -39,9 +40,16 @@ public class ListActivity extends AppCompatActivity {
         CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
         list.setAdapter(listAdaptor);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                toDetailsActivity(view);
+            }
+        });
     }
     public void toDetailsActivity(View view) {
         Intent intent = new Intent(this, DetailsActivity.class);
         this.startActivity(intent);
     }
+
 }
