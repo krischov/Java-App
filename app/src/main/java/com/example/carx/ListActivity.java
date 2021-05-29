@@ -10,15 +10,20 @@ import android.widget.ListView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class ListActivity extends AppCompatActivity {
 
-    private static final String TAG = "ListActivity";
+    ArrayList<Cars> listCars;
+    DataProvider dataProvider;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
+        this.dataProvider = new DataProvider();
         ActionBar actionBar = getSupportActionBar();
-        ListView list = (ListView) findViewById(R.id.carList);
 
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
@@ -27,14 +32,16 @@ public class ListActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
 
+        ListView list = (ListView) findViewById(R.id.carList);
+        listCars = DataProvider.getTotalCars();
+
+        //custrom array adaptor
+        CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
+        list.setAdapter(listAdaptor);
+
     }
     public void toDetailsActivity(View view) {
         Intent intent = new Intent(this, DetailsActivity.class);
         this.startActivity(intent);
     }
-
-
-    //custrom array adaptor
-    //ArrayAdapter listAdaptor = new ArrayAdapter(this, android.R.layout)
-
 }
