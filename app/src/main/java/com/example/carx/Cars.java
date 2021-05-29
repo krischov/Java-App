@@ -1,8 +1,9 @@
 package com.example.carx;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Cars {
+public abstract class Cars implements Serializable {
 
     enum CarID{
         SUV,
