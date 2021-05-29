@@ -32,7 +32,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Cars> contacts, totalCars;
+    ArrayList<Cars> contacts, totalCars, allSUVs, allJDMs, allSupercars;
     DataProvider dataProvider;
     ListView listView;
     EditText searchView;
@@ -62,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // That's all!
-
-        //set search view results display
         totalCars = DataProvider.getTotalCars();
+        allJDMs = DataProvider.getAllJdms();
+        allSupercars = DataProvider.getAllHyperCars();
+        allSUVs = DataProvider.getAllSuvs();
         listView = (ListView) findViewById(R.id.lv1);
         searchView = findViewById(R.id.search_for_cars);
         searchButton = findViewById(R.id.search_button);
@@ -101,6 +101,22 @@ public class MainActivity extends AppCompatActivity {
     public void toListActivity(View view) {
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", totalCars);
+        this.startActivity(intent);
+    }
+
+    public void toSUVListActivity(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", allSUVs);
+        this.startActivity(intent);
+    }
+    public void toJDMListActivity(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", allJDMs);
+        this.startActivity(intent);
+    }
+    public void toSupercarListActivity(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", allSupercars);
         this.startActivity(intent);
     }
 
