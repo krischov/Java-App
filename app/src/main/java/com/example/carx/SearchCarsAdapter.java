@@ -1,5 +1,7 @@
 package com.example.carx;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +55,7 @@ public class SearchCarsAdapter extends ArrayAdapter<Cars> {
             public void onClick(View v) {
                 Intent intent = new Intent(c, DetailsActivity.class);
                 intent.putExtra("Car", Cars.get(position));
-                c.startActivity(intent);
+                c.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((Activity)c).toBundle());
             }
         });
         return convertView;
