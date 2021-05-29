@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize contacts
         contacts = DataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
-        ContactsAdapter adapter = new ContactsAdapter(contacts);
+        ContactsAdapter adapter = new ContactsAdapter(this, contacts);
         // Attach the adapter to the recyclerview to populate items
         rvContacts.setAdapter(adapter);
         // Set layout manager to position the items
@@ -85,13 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         // Disallow ScrollView to intercept touch events.
                         v.getParent().requestDisallowInterceptTouchEvent(true);
                         break;
-
                     case MotionEvent.ACTION_UP:
                         // Allow ScrollView to intercept touch events.
                         v.getParent().requestDisallowInterceptTouchEvent(false);
                         break;
                 }
-
                 // Handle ListView touch events.
                 v.onTouchEvent(event);
                 return true;

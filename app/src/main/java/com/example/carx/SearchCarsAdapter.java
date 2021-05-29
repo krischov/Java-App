@@ -48,7 +48,7 @@ public class SearchCarsAdapter extends ArrayAdapter<Cars> {
             @Override
             public boolean onTouch(View v, MotionEvent motion) {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
-                Intent intent = new Intent(c, ListActivity.class);
+                Intent intent = new Intent(c, DetailsActivity.class);
                 c.startActivity(intent);
                 return true;
             }

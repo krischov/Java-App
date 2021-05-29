@@ -1,6 +1,7 @@
 package com.example.carx;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +44,13 @@ public class ContactsAdapter extends
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
         ImageView imageView = holder.imageCarView;
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(c, DetailsActivity.class);
+                c.startActivity(intent);
+            }
+        });
         textView.setText(contact.getName());
         imageView.setImageURI(Uri.parse("android.resource://com.example.carx/drawable/"+ contact.photos.get(0)));
     }
@@ -72,9 +80,10 @@ public class ContactsAdapter extends
     }
     // Store a member variable for the contacts
     private List<Cars> mContacts;
-
+    private Context c;
     // Pass in the contact array into the constructor
-    public ContactsAdapter(List<Cars> contacts) {
+    public ContactsAdapter(Context context, List<Cars> contacts ) {
         mContacts = contacts;
+        c = context;
     }
 }
