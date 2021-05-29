@@ -53,7 +53,7 @@ public class CarListAdaptor extends ArrayAdapter<Cars> {
             carType = "SUPERCAR";
         }
 
-        String price = getItem(position).getPrice().toString();
+        String price = "NZD$" + getItem(position).getPrice().toString();
 
         //Create a new viewholder to hold views
         ViewHolder holder = new ViewHolder();
