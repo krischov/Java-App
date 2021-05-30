@@ -81,8 +81,8 @@ public class ListActivity extends AppCompatActivity {
                 String search = searchView.getText().toString();
                 for (int i = 0; i < totalCars.size(); i++) {
                     Cars car = totalCars.get(i);
-                    String name = car.name;
-                    if (name.contains(search)) {
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
                         if (suv.isChecked()) {
                             if (car.getCarType() == Cars.CarID.SUV) {
                                 searchedCars.add(car);
@@ -117,8 +117,8 @@ public class ListActivity extends AppCompatActivity {
                 String search = searchView.getText().toString();
                 for (int i = 0; i < totalCars.size(); i++) {
                     Cars car = totalCars.get(i);
-                    String name = car.name;
-                    if (name.contains(search)) {
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
                         if (suv.isChecked()) {
                             if (car.getCarType() == Cars.CarID.SUV) {
                                 searchedCars.add(car);
@@ -153,8 +153,8 @@ public class ListActivity extends AppCompatActivity {
                 String search = searchView.getText().toString();
                 for (int i = 0; i < totalCars.size(); i++) {
                     Cars car = totalCars.get(i);
-                    String name = car.name;
-                    if (name.contains(search)) {
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
                         if (suv.isChecked()) {
                             if (car.getCarType() == Cars.CarID.SUV) {
                                 searchedCars.add(car);
@@ -197,8 +197,8 @@ public class ListActivity extends AppCompatActivity {
 
                 for (int i = 0; i < totalCars.size(); i++) {
                     Cars car = totalCars.get(i);
-                    String name = car.name;
-                    if (name.contains(search)) {
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toString().toLowerCase())) {
                         if (suv.isChecked()) {
                             if (car.getCarType() == Cars.CarID.SUV) {
                                 searchedCars.add(car);
