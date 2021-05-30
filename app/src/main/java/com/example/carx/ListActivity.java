@@ -8,7 +8,12 @@ import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +22,12 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
-    ArrayList<Cars> listCars;
     DataProvider dataProvider;
     ListActivity LA;
-
+    ArrayList<Cars> totalCars, allSUVs, allJDMs, allSupercars;
+    EditText searchView;
+    SearchCarsAdapter searchAdapter;
+    CheckBox suv, jdm, sc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +60,80 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
             }
         });
+
+        totalCars = DataProvider.getTotalCars();
+        allJDMs = DataProvider.getAllJdms();
+        allSupercars = DataProvider.getAllHyperCars();
+        allSUVs = DataProvider.getAllSuvs();
+        searchView = findViewById(R.id.search_for_cars);
+        suv = findViewById(R.id.suv_cb);
+        jdm = findViewById(R.id.jdm_cb);
+        sc = findViewById(R.id.sc_cb);
+
     }
+
+    public void onSearchQuery(View view) {
+        String search = searchView.getText().toString();
+        ArrayList<Cars> searchedCars = new ArrayList<>();
+        LinearLayout searchFilters = findViewById(R.id.search_filters);
+        searchFilters.setVisibility(View.VISIBLE);
+        searchFilters.setAlpha(0);
+        searchFilters.animate()
+                .alpha(1f)
+                .start();
+        for (int i = 0; i < totalCars.size(); i++) {
+            Cars car = totalCars.get(i);
+            String name = car.name;
+            if (name.contains(search)) {
+                if (suv.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUV) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (jdm.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.JDM) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (sc.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                    searchedCars.add(car);
+                }
+            }
+        }
+        if (searchedCars.size() > 0) {
+            searchAdapter = new SearchCarsAdapter(this, searchedCars);
+// Attach the adapter to a ListView
+            ListView listView = (ListView) findViewById(R.id.lv1);
+            listView.setAdapter(searchAdapter);
+        } else {
+            Toast.makeText(ListActivity.this, "No Match found", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void toggleFilters(View view) {
+        LinearLayout searchFilters = findViewById(R.id.search_filters);
+        if (searchFilters.getVisibility() == View.GONE) {
+            searchFilters.setVisibility(View.VISIBLE);
+            searchFilters.setAlpha(0);
+            searchFilters.animate()
+                    .alpha(1f)
+                    .start();
+        } else {
+            searchFilters.animate()
+                    .alpha(0f)
+                    .withEndAction(new Runnable() {
+                        @Override
+                        public void run() {
+                            searchFilters.setVisibility(View.GONE);
+                        }
+                    })
+                    .start();
+        }
+    }
+
 }
