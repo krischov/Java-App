@@ -97,6 +97,59 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence search, int start, int before, int count) {
+                ArrayList<Cars> searchedCars = new ArrayList<>();
+                LinearLayout searchFilters = findViewById(R.id.search_filters);
+                if(searchFilters.getVisibility() == View.GONE){
+                    searchFilters.setVisibility(View.VISIBLE);
+                    searchFilters.setAlpha(0);
+                    searchFilters.animate()
+                            .alpha(1f)
+                            .start();
+                }
+
+                for (int i = 0; i < totalCars.size(); i++) {
+                    Cars car = totalCars.get(i);
+                    String name = car.name;
+                    if (name.contains(search)) {
+                        if (suv.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUV) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (jdm.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.JDM) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (sc.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                            searchedCars.add(car);
+                        }
+                    }
+                }
+
+
+                searchAdapter = new SearchCarsAdapter(MainActivity.this, searchedCars);
+                listView.setAdapter(searchAdapter);
+
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
     public void toSUVListActivity(View view){

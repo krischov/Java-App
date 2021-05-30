@@ -106,10 +106,9 @@ public class ListActivity extends AppCompatActivity {
             }
         }
         if (searchedCars.size() > 0) {
-            searchAdapter = new SearchCarsAdapter(this, searchedCars);
-// Attach the adapter to a ListView
-            ListView listView = (ListView) findViewById(R.id.lv1);
-            listView.setAdapter(searchAdapter);
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", searchedCars);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         } else {
             Toast.makeText(ListActivity.this, "No Match found", Toast.LENGTH_LONG).show();
         }
