@@ -43,7 +43,7 @@
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
                 app:cardCornerRadius="20dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
@@ -89,7 +89,7 @@
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
                 app:cardCornerRadius="20dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
@@ -134,7 +134,7 @@
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
                 app:cardCornerRadius="20dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
