@@ -9,16 +9,48 @@
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/no_results_layout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="50dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="50dp"
+            android:backgroundTint="@color/black"
+            android:background="@drawable/ic_baseline_block_24"
+            android:layout_height="50dp"/>
+        <TextView
+            android:textSize="30dp"
+            android:id="@+id/no_results"
+            android:text="No results found"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="#FF5722"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="15dp"
+            android:id="@+id/no_results_msg"
+            android:text="We apologize for any inconvenience, please try searching for a different car."
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/carList"
-        android:clipToPadding="false"
-        android:paddingTop="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:clipToPadding="false"
         android:divider="@android:color/transparent"
-        android:dividerHeight="20.0dp"></ListView>
+        android:dividerHeight="20.0dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"></ListView>
 
 </LinearLayout>
