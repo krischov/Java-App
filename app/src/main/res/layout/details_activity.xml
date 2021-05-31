@@ -67,7 +67,9 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:paddingBottom="2dp"
+                android:justificationMode="inter_word"
                 android:textSize="15dp"
                 android:text="Description" />
 
