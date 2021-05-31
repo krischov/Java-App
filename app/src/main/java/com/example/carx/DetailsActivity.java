@@ -33,6 +33,8 @@ public class DetailsActivity extends AppCompatActivity {
             String totalCarName = totalCars.get(i).name;
             if( totalCarName.equals(carName)){
                 carToShow.incrementViews(i);
+                TextView carViews = findViewById(R.id.car_views);
+                carViews.setText(DataProvider.totalCars.get(i).views + " Views");
                 break;
             }
         }
