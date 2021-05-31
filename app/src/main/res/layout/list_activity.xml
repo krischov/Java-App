@@ -9,15 +9,38 @@
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/no_results"
+    <LinearLayout
+        android:id="@+id/no_results_layout"
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:textAlignment="center"
+        android:orientation="vertical"
         android:gravity="center"
-        android:visibility="gone"
-        android:layout_height="match_parent"/>
-
+        android:padding="50dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="50dp"
+            android:backgroundTint="@color/black"
+            android:background="@drawable/ic_baseline_block_24"
+            android:layout_height="50dp"/>
+        <TextView
+            android:textSize="30dp"
+            android:id="@+id/no_results"
+            android:text="No results found"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="#FF5722"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="15dp"
+            android:id="@+id/no_results_msg"
+            android:text="We apologize for any inconvenience, please try searching for a different car."
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/carList"
         android:layout_width="match_parent"

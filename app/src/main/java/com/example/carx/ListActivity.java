@@ -44,12 +44,10 @@ public class ListActivity extends AppCompatActivity {
         }
         Intent a = getIntent();
         ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
-        TextView noResults = findViewById(R.id.no_results);
+        LinearLayout noResults = findViewById(R.id.no_results_layout);
         if(listCars.size() == 0) {
-            noResults.setText("No Results");
             noResults.setVisibility(View.VISIBLE);
         } else {
-            noResults.setText("");
             noResults.setVisibility(View.GONE);
         }
         ListView list = (ListView) findViewById(R.id.carList);

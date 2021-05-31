@@ -118,13 +118,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        if (searchedCars.size() > 0) {
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", searchedCars);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-        } else {
-            Toast.makeText(MainActivity.this, "No Match found", Toast.LENGTH_LONG).show();
-        }
+
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", searchedCars);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
     }
 
     public void toggleFilters(View view) {
