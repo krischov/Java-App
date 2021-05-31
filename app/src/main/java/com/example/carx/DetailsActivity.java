@@ -3,6 +3,7 @@ package com.example.carx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,7 +41,6 @@ public class DetailsActivity extends AppCompatActivity {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(false);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
 
         String carType;
