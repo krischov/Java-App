@@ -104,12 +104,6 @@
                     android:buttonTint="@color/black"
                     android:id="@+id/jdm_cb"
                     android:text="JDM" />
-
-                <ListView
-                    android:id="@+id/lv1"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
