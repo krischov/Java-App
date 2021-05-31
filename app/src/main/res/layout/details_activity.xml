@@ -33,6 +33,7 @@
                     android:textStyle="bold"
                     android:text="TextView" />
                 <TextView
+                    android:textSize="20dp"
                     android:id="@+id/car_views"
                     android:layout_width="wrap_content"
                     android:text="Views"
