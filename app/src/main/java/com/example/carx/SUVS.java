@@ -11,11 +11,15 @@ class Suv extends Cars{
         setCarType(CarID.SUV);
     }
 
-    public Float getGroundClearance() {
-        return groundClearance;
+    public String getAdditional() {
+        return Float.toString(getGroundClearance());
     }
 
     public void setGroundClearance(Float groundClearance) {
         this.groundClearance = groundClearance;
+    }
+
+    public float getGroundClearance() {
+        return groundClearance;
     }
 }

@@ -59,10 +59,8 @@ public class ListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Cars detailCar = (Cars) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
-                //intent.putExtra("Car", listCars.get(position));
-                intent.putExtra("Car", detailCar);
+                intent.putExtra("Car", listCars.get(position));
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
             }
         });
