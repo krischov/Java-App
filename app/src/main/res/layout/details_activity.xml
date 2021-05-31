@@ -24,7 +24,7 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="2dp"
                 android:paddingTop="2dp"
-                android:textSize="30dp"
+                android:textSize="32dp"
                 android:textColor="@color/orange"
                 android:textStyle="bold"
                 android:text="TextView" />
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 android:text="TextView" />
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:text="TextView" />
 
             <TextView
@@ -68,6 +68,39 @@
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
+                android:textSize="15dp"
+                android:text="Description" />
+
+            <TextView
+                android:id="@+id/AdditionalInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
+                android:textSize="15dp"
+                android:text="Additional Information" />
+
+            <TextView
+                android:id="@+id/ad1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="2dp"
+                android:textSize="15dp"
+                android:text="Description" />
+
+            <TextView
+                android:id="@+id/ad2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="2dp"
+                android:textSize="15dp"
                 android:text="Description" />
         </LinearLayout>
     </ScrollView>
