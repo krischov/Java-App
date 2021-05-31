@@ -1,13 +1,11 @@
 package com.example.carx;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Cars implements Serializable {
 
-    enum CarID {
+    enum CarID{
         SUV,
         SUPERCAR,
         JDM
@@ -16,13 +14,14 @@ public abstract class Cars implements Serializable {
     Float price;
     String description;
     String name;
-    int views;
+    static int views;
     ArrayList<String> photos;
     boolean factoryNew;
     CarID CarType;
 
 
-    public Cars(Float price, String description, String name, ArrayList<String> photos, boolean factoryNew) {
+    public Cars(Float price, String description, String name, ArrayList<String> photos, boolean factoryNew)
+    {
         this.price = price;
         this.description = description;
         this.name = name;
@@ -30,7 +29,6 @@ public abstract class Cars implements Serializable {
         this.factoryNew = factoryNew;
         this.views = 0;
     }
-
     public int getViews(int index) {
         return DataProvider.totalCars.get(index).views;
     }
@@ -38,7 +36,6 @@ public abstract class Cars implements Serializable {
     public void incrementViews(int index) {
         DataProvider.totalCars.get(index).views++;
     }
-
     public Float getPrice() {
         return price;
     }
