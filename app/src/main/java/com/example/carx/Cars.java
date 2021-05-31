@@ -14,6 +14,7 @@ public abstract class Cars implements Serializable {
     Float price;
     String description;
     String name;
+    int views;
     ArrayList<String> photos;
     boolean factoryNew;
     CarID CarType;
@@ -26,6 +27,7 @@ public abstract class Cars implements Serializable {
         this.name = name;
         this.photos = photos;
         this.factoryNew = factoryNew;
+        this.views = 0;
     }
 
     public Float getPrice() {
