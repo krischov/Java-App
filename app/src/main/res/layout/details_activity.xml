@@ -11,9 +11,10 @@
 
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/carPIC"
+            android:id="@+id/pager"
+            android:paddingTop = "10dp"
             android:layout_width="match_parent"
-            android:layout_height="300dp"></androidx.viewpager.widget.ViewPager>
+            android:layout_height="250dp"></androidx.viewpager.widget.ViewPager>
 
             <TextView
                 android:id="@+id/NAME"
@@ -53,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:paddingBottom="2dp"
                 android:textStyle="bold"
                 android:textColor="@color/orange"
