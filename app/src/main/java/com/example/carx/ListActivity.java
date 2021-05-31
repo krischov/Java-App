@@ -39,8 +39,7 @@ public class ListActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+            actionBar.setDisplayHomeAsUpEnabled(false);
         }
         Intent a = getIntent();
         ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
@@ -128,7 +127,4 @@ public class ListActivity extends AppCompatActivity {
                     .start();
         }
     }
-
-    
-
 }
