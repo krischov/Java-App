@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -40,14 +41,18 @@ public class DetailsActivity extends AppCompatActivity {
         TextView Name = (TextView) findViewById(R.id.NAME);
         Name.setText(carToShow.name);
 
-        TextView Price = (TextView) findViewById(R.id.PRICE);
-        Price.setText(carToShow.price.toString());
+        TextView viewed_Category = (TextView) findViewById(R.id.CATEGORY);
+        viewed_Category.setText(carType);
 
-        TextView Category = (TextView) findViewById(R.id.PRICE);
+        TextView Price = (TextView) findViewById(R.id.PRICE);
         Price.setText("NZD$"+ carToShow.price.toString());
 
         TextView Desc = (TextView) findViewById(R.id.DESCRIPTION);
         Desc.setText(carToShow.description);
+
+        ViewPager viewpager = (ViewPager) findViewById(R.id.pager);
+        ImageViewAdapter ImageAdapter = new ImageViewAdapter(this, carToShow.photos);
+        viewpager.setAdapter(ImageAdapter);
 
 
     }
