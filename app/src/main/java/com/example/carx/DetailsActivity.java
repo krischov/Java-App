@@ -11,6 +11,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
+
 import static com.example.carx.Cars.CarID.SUPERCAR;
 import static com.example.carx.Cars.CarID.SUV;
 import static java.lang.Boolean.TRUE;
@@ -24,8 +26,17 @@ public class DetailsActivity extends AppCompatActivity {
         Cars carToShow = (Cars)a.getSerializableExtra("Car");
         setContentView(R.layout.details_activity);
         ActionBar actionBar = getSupportActionBar();
-        carToShow.incrementViews();
-        Log.d("checking views", "" + carToShow.getViews());
+
+        String carName = carToShow.name;
+        ArrayList<Cars> totalCars = DataProvider.totalCars;
+        for(int i = 0; i < totalCars.size(); i++){
+            String totalCarName = totalCars.get(i).name;
+            if( totalCarName.equals(carName)){
+                carToShow.incrementViews(i);
+                break;
+            }
+        }
+
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);

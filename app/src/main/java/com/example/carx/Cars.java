@@ -31,13 +31,14 @@ public abstract class Cars implements Serializable {
         this.views = 0;
     }
 
-    public int getViews() {
-        return views;
+    public int getViews(int index) {
+        return DataProvider.totalCars.get(index).views;
     }
-    public void incrementViews() {
-        Log.d("Incrementing", "plus 1 view");
-        views++;
+
+    public void incrementViews(int index) {
+        DataProvider.totalCars.get(index).views++;
     }
+
     public Float getPrice() {
         return price;
     }

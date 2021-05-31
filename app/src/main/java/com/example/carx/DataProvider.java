@@ -384,7 +384,6 @@ public class DataProvider {
         return realTopPicks;
     }
 
-
     public static ArrayList<Cars> getTotalCars() {
         return totalCars;
     }
