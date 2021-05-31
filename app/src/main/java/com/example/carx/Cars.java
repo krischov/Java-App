@@ -16,7 +16,7 @@ public abstract class Cars implements Serializable {
     Float price;
     String description;
     String name;
-    int views;
+    static int views;
     ArrayList<String> photos;
     boolean factoryNew;
     CarID CarType;
