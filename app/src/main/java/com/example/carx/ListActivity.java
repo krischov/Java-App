@@ -36,7 +36,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
-        this.dataProvider = new DataProvider();
         ActionBar actionBar = getSupportActionBar();
         LA = this;
 
@@ -59,7 +58,8 @@ public class ListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cars detailCar = (Cars) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
-                intent.putExtra("Car", listCars.get(position));
+                //intent.putExtra("Car", listCars.get(position));
+                intent.putExtra("Car", detailCar);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
             }
         });
@@ -299,5 +299,7 @@ public class ListActivity extends AppCompatActivity {
                     .start();
         }
     }
+
+    
 
 }
