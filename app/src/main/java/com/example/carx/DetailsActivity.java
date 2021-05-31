@@ -10,6 +10,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import static com.example.carx.Cars.CarID.SUPERCAR;
+import static com.example.carx.Cars.CarID.SUV;
+import static java.lang.Boolean.TRUE;
+
 public class DetailsActivity extends AppCompatActivity {
 
     @Override
@@ -28,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         String carType;
-        if(carToShow.getCarType() == Cars.CarID.SUV) {
+        if(carToShow.getCarType() == SUV) {
             carType = "SUV";
         }
         else if (carToShow.getCarType() == Cars.CarID.JDM){
@@ -49,6 +53,28 @@ public class DetailsActivity extends AppCompatActivity {
 
         TextView Desc = (TextView) findViewById(R.id.DESCRIPTION);
         Desc.setText(carToShow.description);
+
+        TextView FactoryNew = (TextView) findViewById(R.id.ad1);
+        if(carToShow.getFactoryNew() == TRUE) {
+            FactoryNew.setText("Factory New: YES");
+        }
+        else {
+            FactoryNew.setText("Factory New: NO");
+        }
+
+        TextView secondProperty = (TextView) findViewById(R.id.ad2);
+        String adInfo = carToShow.getAdditional();
+        if(carToShow.getCarType() == SUV){
+            secondProperty.setText("Ground Clearance: " + adInfo + " mm");
+        }
+        else if(carToShow.getCarType() == SUPERCAR){
+            secondProperty.setText("Maximum Speed: " + adInfo + " km/h");
+        }
+        else{
+            secondProperty.setText("Customised: " + adInfo);
+        }
+
+
 
         ViewPager viewpager = (ViewPager) findViewById(R.id.pager);
         ImageViewAdapter ImageAdapter = new ImageViewAdapter(this, carToShow.photos);

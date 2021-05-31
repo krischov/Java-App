@@ -75,4 +75,6 @@ public abstract class Cars implements Serializable {
     public void setCarType(CarID carType) {
         this.CarType = carType;
     }
+
+    public abstract String getAdditional();
 }
