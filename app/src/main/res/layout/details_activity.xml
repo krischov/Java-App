@@ -58,15 +58,16 @@
                 android:paddingBottom="2dp"
                 android:textStyle="bold"
                 android:textColor="@color/orange"
-                android:text="Descripton" />
+                android:textSize="15dp"
+                android:text="Description" />
 
             <TextView
                 android:id="@+id/DESCRIPTION"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingBottom="2dp"
-                android:text="Descripton" />
+                android:text="Description" />
         </LinearLayout>
     </ScrollView>
