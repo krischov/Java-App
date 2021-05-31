@@ -38,9 +38,20 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     EditText searchView;
     Button searchButton;
-    SearchCarsAdapter searchAdapter;
     CheckBox suv, jdm, sc;
-
+    @Override
+    protected void onResume(){
+        super.onResume();
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        // Initialize contacts
+        contacts = dataProvider.getTopPicks(5);
+        // Create adapter passing in the sample user data
+        ContactsAdapter adapter = new ContactsAdapter(this, contacts);
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
 
         // Initialize contacts
-        contacts = DataProvider.getTopPicks(5);
+        contacts = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
         ContactsAdapter adapter = new ContactsAdapter(this, contacts);
         // Attach the adapter to the recyclerview to populate items
@@ -63,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        totalCars = DataProvider.getTotalCars();
+        totalCars = dataProvider.getTotalCars();
         allJDMs = DataProvider.getAllJdms();
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
@@ -72,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
-        searchAdapter = new SearchCarsAdapter(this);
     }
 
     public void toSUVListActivity(View view){
@@ -96,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Cars> searchedCars = new ArrayList<>();
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
-            String name = car.name;
-            if (name.contains(search)) {
+            String name = car.name.toLowerCase();
+            if (name.contains(search.toLowerCase())) {
                 if (suv.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUV) {
                         searchedCars.add(car);

@@ -4,13 +4,15 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class DataProvider {
 
     static ArrayList<Cars> totalCars, allSuperCars, allJdms, allSuvs;
 
     public DataProvider() {
-
+        Log.e("recreating DP", "error");
         //JDMS
         Jdm jdm1 = new Jdm(
                 215000f,
@@ -218,7 +220,7 @@ public class DataProvider {
 
         Supercar supercar6 = new Supercar(157868f,
                 "Has a 3.8 litre twin turbo V6 producing 562bhp and 470lb ft with a 0-62mph of 2.7 secs.\n" +
-                    "Has many features such as Apple Carplay, review camera, navigation system, GTR, multi-function display, leather interior and a Bose sound system. Also has many safety and driver assist features: vehicle dynamic control, traction control, and anti-lock braking system.",
+                        "Has many features such as Apple Carplay, review camera, navigation system, GTR, multi-function display, leather interior and a Bose sound system. Also has many safety and driver assist features: vehicle dynamic control, traction control, and anti-lock braking system.",
                 "2021 Nissan R35 GTR",
                 new ArrayList <String>(Arrays.asList("sc6_1", "sc6_2", "sc6_3")),
                 true,
@@ -252,10 +254,10 @@ public class DataProvider {
 
         Supercar supercar10 = new Supercar(418516f,
                 "High performance vehicle achieving 0-60mph in 2.7 seconds. \n"
-                + "Has a luxurious Carbon fibre tub to limit weight and ensure rigidity with two seat cabin. \n"
-                + "\n"
-                + "Features include:\n"
-                + "Vertically oriented 7.0-inch touchscreen that includes Bluetooth, four speaker audio system and two USB ports. Front and rear parking sensors, front end lift system and backup camera.",
+                        + "Has a luxurious Carbon fibre tub to limit weight and ensure rigidity with two seat cabin. \n"
+                        + "\n"
+                        + "Features include:\n"
+                        + "Vertically oriented 7.0-inch touchscreen that includes Bluetooth, four speaker audio system and two USB ports. Front and rear parking sensors, front end lift system and backup camera.",
                 "2020 Mclaren 720s",
                 new ArrayList <String>(Arrays.asList("sc10_1", "sc10_2", "sc10_3")),
                 true,
@@ -315,7 +317,7 @@ public class DataProvider {
 
         Suv suv6 = new Suv(55190f,
                 "The Model Y is designed to be the safest vehicle in its class, boasting multiple safety features such as the low centre of gravity\n"
-                + "The Model Y also presents the user with a slew of amazing features such as autopilot, a massive range on a single charge and seating for five.",
+                        + "The Model Y also presents the user with a slew of amazing features such as autopilot, a massive range on a single charge and seating for five.",
                 "Tesla Model Y 2021 Performance",
                 new ArrayList <String>(Arrays.asList("suv6_1", "suv6_2", "suv6_3")),
                 true,
@@ -367,37 +369,20 @@ public class DataProvider {
         this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
-    public static ArrayList<Cars> getTopPicks(int num_topPicks) {
-        ArrayList<Cars> topPicks = new ArrayList<Cars>();
-        ArrayList<Integer> usedIndexes = new ArrayList();
-
-        for (int i = 0; i < num_topPicks; i++) {
-            boolean chosen = false;
-            int index = 0;
-            while (!chosen) {
-//              generate a random index
-                index = (int) (Math.random() * totalCars.size());
-                boolean matched = false;
-
-//              check if the random index has already been used
-                for (int j = 0; j < usedIndexes.size(); j++) {
-                    int usedIndex = usedIndexes.get(j);
-                    if (index == usedIndex) {
-                        matched = true;
-                        break;
-                    }
-                }
-//              if there is no match, then add the car to top picks
-                if (!matched) {
-                    usedIndexes.add(index);
-                    chosen = true;
-                }
+    public ArrayList<Cars> getTopPicks(int num_topPicks) {
+        ArrayList<Cars> realTopPicks = new ArrayList<Cars>();
+        Collections.sort(this.totalCars, new Comparator<Cars>() {
+            @Override
+            public int compare(Cars lhs, Cars rhs) {
+                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                return lhs.views > rhs.views ? -1 : (lhs.views < rhs.views) ? 1 : 0;
             }
-            topPicks.add(totalCars.get(index));
+        });
+        for(int i = 0; i < num_topPicks; i++){
+            realTopPicks.add(totalCars.get(i));
         }
-        return topPicks;
+        return realTopPicks;
     }
-
 
     public static ArrayList<Cars> getTotalCars() {
         return totalCars;

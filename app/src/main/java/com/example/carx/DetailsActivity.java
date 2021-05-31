@@ -3,12 +3,15 @@ package com.example.carx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import java.util.ArrayList;
 
 import static com.example.carx.Cars.CarID.SUPERCAR;
 import static com.example.carx.Cars.CarID.SUV;
@@ -24,11 +27,23 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.details_activity);
         ActionBar actionBar = getSupportActionBar();
 
+        String carName = carToShow.name;
+        ArrayList<Cars> totalCars = DataProvider.totalCars;
+        for(int i = 0; i < totalCars.size(); i++){
+            String totalCarName = totalCars.get(i).name;
+            if( totalCarName.equals(carName)){
+                carToShow.incrementViews(i);
+                TextView carViews = findViewById(R.id.car_views);
+                int totalViews = DataProvider.totalCars.get(i).views;
+                carViews.setText(totalViews + (totalViews > 1 ? " Views" : " View"));
+                break;
+            }
+        }
+
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(false);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
 
         String carType;

@@ -81,8 +81,8 @@ public class ListActivity extends AppCompatActivity {
         ArrayList<Cars> searchedCars = new ArrayList<>();
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
-            String name = car.name;
-            if (name.contains(search)) {
+            String name = car.name.toLowerCase();
+            if (name.contains(search.toLowerCase())) {
                 if (suv.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUV) {
                         searchedCars.add(car);
