@@ -11,8 +11,11 @@ class Jdm extends Cars{
         setCarType(CarID.JDM);
     }
 
-    public boolean getIsModified() {
-        return isModified;
+    public String getAdditional() {
+        if(isModified){
+            return "YES";
+        }
+        else return "NO";
     }
 
     public void setIsModified(boolean isModified) {

@@ -11,9 +11,10 @@ class Supercar extends Cars{
         setCarType(CarID.SUPERCAR);
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public String getAdditional() {
+        return Integer.toString(maxSpeed);
     }
+
 
     public void setGroundClearance(int maxSpeed) {
         this.maxSpeed = maxSpeed;
