@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -43,6 +44,14 @@ public class ListActivity extends AppCompatActivity {
         }
         Intent a = getIntent();
         ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
+        TextView noResults = findViewById(R.id.no_results);
+        if(listCars.size() == 0) {
+            noResults.setText("No Results");
+            noResults.setVisibility(View.VISIBLE);
+        } else {
+            noResults.setText("");
+            noResults.setVisibility(View.GONE);
+        }
         ListView list = (ListView) findViewById(R.id.carList);
 
         //custrom array adaptor
@@ -98,13 +107,11 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
         }
-        if (searchedCars.size() > 0) {
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", searchedCars);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-        } else {
-            Toast.makeText(ListActivity.this, "No Match found", Toast.LENGTH_LONG).show();
-        }
+
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", searchedCars);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
     }
 
     public void toggleFilters(View view) {
