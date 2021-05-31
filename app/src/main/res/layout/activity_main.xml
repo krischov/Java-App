@@ -38,13 +38,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="221dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_margin="2dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -84,13 +84,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="221dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_margin="2dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -129,13 +129,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="221dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_margin="2dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -172,5 +172,4 @@
                 android:layout_height="match_parent"/>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
-
 </ScrollView>
