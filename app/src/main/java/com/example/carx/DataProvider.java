@@ -4,15 +4,13 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class DataProvider {
 
     static ArrayList<Cars> totalCars, allSuperCars, allJdms, allSuvs;
 
     public DataProvider() {
-        Log.e("recreating DP", "error");
+
         //JDMS
         Jdm jdm1 = new Jdm(
                 215000f,
@@ -369,19 +367,35 @@ public class DataProvider {
         this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
-    public ArrayList<Cars> getTopPicks(int num_topPicks) {
-        ArrayList<Cars> realTopPicks = new ArrayList<Cars>();
-        Collections.sort(this.totalCars, new Comparator<Cars>() {
-            @Override
-            public int compare(Cars lhs, Cars rhs) {
-                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                return lhs.views > rhs.views ? -1 : (lhs.views < rhs.views) ? 1 : 0;
+    public static ArrayList<Cars> getTopPicks(int num_topPicks) {
+        ArrayList<Cars> topPicks = new ArrayList<Cars>();
+        ArrayList<Integer> usedIndexes = new ArrayList();
+
+        for (int i = 0; i < num_topPicks; i++) {
+            boolean chosen = false;
+            int index = 0;
+            while (!chosen) {
+//              generate a random index
+                index = (int) (Math.random() * totalCars.size());
+                boolean matched = false;
+
+//              check if the random index has already been used
+                for (int j = 0; j < usedIndexes.size(); j++) {
+                    int usedIndex = usedIndexes.get(j);
+                    if (index == usedIndex) {
+                        matched = true;
+                        break;
+                    }
+                }
+//              if there is no match, then add the car to top picks
+                if (!matched) {
+                    usedIndexes.add(index);
+                    chosen = true;
+                }
             }
-        });
-        for(int i = 0; i < num_topPicks; i++){
-            realTopPicks.add(totalCars.get(i));
+            topPicks.add(totalCars.get(index));
         }
-        return realTopPicks;
+        return topPicks;
     }
 
 

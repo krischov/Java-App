@@ -3,7 +3,6 @@ package com.example.carx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,12 +23,12 @@ public class DetailsActivity extends AppCompatActivity {
         Cars carToShow = (Cars)a.getSerializableExtra("Car");
         setContentView(R.layout.details_activity);
         ActionBar actionBar = getSupportActionBar();
-        carToShow.incrementViews();
-        Log.d("checking views", "" + carToShow.getViews());
+
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         }
 
         String carType;
