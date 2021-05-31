@@ -52,7 +52,7 @@
                 android:id="@+id/TDESCRIPTION"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="30dp"
+                android:paddingTop="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="2dp"
