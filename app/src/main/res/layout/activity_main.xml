@@ -48,6 +48,7 @@
                 android:scaleType="centerCrop"
                 android:background="@layout/image_view_border"
                 android:cropToPadding="true"
+                android:onClick="toSUVListActivity"
                 android:src="@drawable/suv" />
             <TextView
                 android:id="@+id/myImageViewText"
@@ -77,6 +78,7 @@
                 android:scaleType="centerCrop"
                 android:background="@layout/image_view_border"
                 android:cropToPadding="true"
+                android:onClick="toSupercarListActivity"
                 android:src="@drawable/supercar" />
             <TextView
                 android:id="@+id/myImageViewText2"
@@ -106,6 +108,7 @@
                 android:scaleType="centerCrop"
                 android:background="@layout/image_view_border"
                 android:cropToPadding="true"
+                android:onClick="toJDMListActivity"
                 android:src="@drawable/jdm" />
             <TextView
                 android:id="@+id/myImageViewText3"
@@ -122,12 +125,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/white" />
         </RelativeLayout>
-        <Button
-            android:id="@+id/to_list_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toListActivity"
-            android:text="To List Activity" />
     </LinearLayout>
 
 </ScrollView>

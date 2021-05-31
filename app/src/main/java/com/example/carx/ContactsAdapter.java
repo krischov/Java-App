@@ -1,5 +1,7 @@
 package com.example.carx;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -50,7 +52,7 @@ public class ContactsAdapter extends
             public void onClick(View v){
                 Intent intent = new Intent(c, DetailsActivity.class);
                 intent.putExtra("Car", contact);
-                c.startActivity(intent);
+                c.startActivity(intent,  ActivityOptions.makeSceneTransitionAnimation((Activity)c).toBundle());
             }
         });
         textView.setText(contact.getName());

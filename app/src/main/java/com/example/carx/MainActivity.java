@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Cars> contacts, totalCars;
+    ArrayList<Cars> contacts, totalCars, allSUVs, allJDMs, allSupercars;
     DataProvider dataProvider;
     ListView listView;
     EditText searchView;
@@ -62,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // That's all!
-
-        //set search view results display
         totalCars = DataProvider.getTotalCars();
+        allJDMs = DataProvider.getAllJdms();
+        allSupercars = DataProvider.getAllHyperCars();
+        allSUVs = DataProvider.getAllSuvs();
         listView = (ListView) findViewById(R.id.lv1);
         searchView = findViewById(R.id.search_for_cars);
         searchButton = findViewById(R.id.search_button);
@@ -96,11 +97,183 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        suv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Cars> searchedCars = new ArrayList<>();
+                String search = searchView.getText().toString();
+                for (int i = 0; i < totalCars.size(); i++) {
+                    Cars car = totalCars.get(i);
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
+                        if (suv.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUV) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (jdm.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.JDM) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (sc.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                            searchedCars.add(car);
+                        }
+                    }
+                }
+
+
+                searchAdapter = new SearchCarsAdapter(MainActivity.this, searchedCars);
+                listView.setAdapter(searchAdapter);
+            }
+        });
+
+        jdm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Cars> searchedCars = new ArrayList<>();
+                String search = searchView.getText().toString();
+                for (int i = 0; i < totalCars.size(); i++) {
+                    Cars car = totalCars.get(i);
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
+                        if (suv.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUV) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (jdm.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.JDM) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (sc.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                            searchedCars.add(car);
+                        }
+                    }
+                }
+
+
+                searchAdapter = new SearchCarsAdapter(MainActivity.this, searchedCars);
+                listView.setAdapter(searchAdapter);
+            }
+        });
+
+        sc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Cars> searchedCars = new ArrayList<>();
+                String search = searchView.getText().toString();
+                for (int i = 0; i < totalCars.size(); i++) {
+                    Cars car = totalCars.get(i);
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toLowerCase())) {
+                        if (suv.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUV) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (jdm.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.JDM) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (sc.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                            searchedCars.add(car);
+                        }
+                    }
+                }
+
+
+                searchAdapter = new SearchCarsAdapter(MainActivity.this, searchedCars);
+                listView.setAdapter(searchAdapter);
+            }
+        });
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence search, int start, int before, int count) {
+                ArrayList<Cars> searchedCars = new ArrayList<>();
+                LinearLayout searchFilters = findViewById(R.id.search_filters);
+                if(searchFilters.getVisibility() == View.GONE){
+                    searchFilters.setVisibility(View.VISIBLE);
+                    searchFilters.setAlpha(0);
+                    searchFilters.animate()
+                            .alpha(1f)
+                            .start();
+                }
+
+                for (int i = 0; i < totalCars.size(); i++) {
+                    Cars car = totalCars.get(i);
+                    String name = car.name.toLowerCase();
+                    if (name.contains(search.toString().toLowerCase())) {
+                        if (suv.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUV) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (jdm.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.JDM) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (sc.isChecked()) {
+                            if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                                searchedCars.add(car);
+                            }
+                        }
+                        if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                            searchedCars.add(car);
+                        }
+                    }
+                }
+
+
+                searchAdapter = new SearchCarsAdapter(MainActivity.this, searchedCars);
+                listView.setAdapter(searchAdapter);
+
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
-    public void toListActivity(View view) {
+    public void toSUVListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
-        this.startActivity(intent);
+        intent.putExtra("Cars", allSUVs);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
+    public void toJDMListActivity(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", allJDMs);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
+    public void toSupercarListActivity(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", allSupercars);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void onSearchQuery(View view) {
@@ -137,10 +310,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (searchedCars.size() > 0) {
-            searchAdapter = new SearchCarsAdapter(this, searchedCars);
-// Attach the adapter to a ListView
-            ListView listView = (ListView) findViewById(R.id.lv1);
-            listView.setAdapter(searchAdapter);
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", searchedCars);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         } else {
             Toast.makeText(MainActivity.this, "No Match found", Toast.LENGTH_LONG).show();
         }
