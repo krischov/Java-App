@@ -29,54 +29,8 @@ public class ListActivity extends AppCompatActivity {
     ArrayList<Cars> totalCars, allSUVs, allJDMs, allSupercars;
     EditText searchView;
     CheckBox suv, jdm, sc;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_activity);
-        ActionBar actionBar = getSupportActionBar();
-        LA = this;
-
-        if (actionBar != null) {
-            actionBar.setCustomView(R.layout.actionbar_layout);
-            actionBar.setDisplayShowCustomEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(false);
-        }
-        Intent a = getIntent();
-        ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
-        LinearLayout noResults = findViewById(R.id.no_results_layout);
-        if(listCars.size() == 0) {
-            noResults.setVisibility(View.VISIBLE);
-        } else {
-            noResults.setVisibility(View.GONE);
-        }
-        ListView list = (ListView) findViewById(R.id.carList);
-
-        //custrom array adaptor
-        CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
-        list.setAdapter(listAdaptor);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
-                intent.putExtra("Car", listCars.get(position));
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
-            }
-        });
-
-        totalCars = DataProvider.getTotalCars();
-        allJDMs = DataProvider.getAllJdms();
-        allSupercars = DataProvider.getAllHyperCars();
-        allSUVs = DataProvider.getAllSuvs();
-        searchView = findViewById(R.id.search_for_cars);
-        suv = findViewById(R.id.suv_cb);
-        jdm = findViewById(R.id.jdm_cb);
-        sc = findViewById(R.id.sc_cb);
-
-
-    }
-    public void onSearchQuery(View view) {
+    ListView list;
+    protected void onSearchViewChange(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
         for (int i = 0; i < totalCars.size(); i++) {
@@ -103,11 +57,90 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
         }
+        CarListAdaptor listAdaptor = new CarListAdaptor(ListActivity.this, R.layout.custom_list_view, searchedCars);
+        list.setAdapter(listAdaptor);
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_activity);
+        ActionBar actionBar = getSupportActionBar();
+        LA = this;
 
-        Intent intent = new Intent(this, ListActivity.class);
-        intent.putExtra("Cars", searchedCars);
-        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        if (actionBar != null) {
+            actionBar.setCustomView(R.layout.actionbar_layout);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        }
+        Intent a = getIntent();
+        ArrayList<Cars> listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
+        LinearLayout noResults = findViewById(R.id.no_results_layout);
+        if(listCars.size() == 0) {
+            noResults.setVisibility(View.VISIBLE);
+        } else {
+            noResults.setVisibility(View.GONE);
+        }
+        list = (ListView) findViewById(R.id.carList);
 
+        //custrom array adaptor
+        CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
+        list.setAdapter(listAdaptor);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
+                intent.putExtra("Car", listCars.get(position));
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
+            }
+        });
+
+        totalCars = DataProvider.getTotalCars();
+        allJDMs = DataProvider.getAllJdms();
+        allSupercars = DataProvider.getAllHyperCars();
+        allSUVs = DataProvider.getAllSuvs();
+        searchView = findViewById(R.id.search_for_cars);
+        suv = findViewById(R.id.suv_cb);
+        jdm = findViewById(R.id.jdm_cb);
+        sc = findViewById(R.id.sc_cb);
+        suv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onSearchViewChange();
+            }
+        });
+        sc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSearchViewChange();
+            }
+        });
+        jdm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSearchViewChange();
+            }
+        });
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence search, int start, int before, int count) {
+                onSearchViewChange();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+    }
+    public void onSearchQuery(View view) {
+        onSearchViewChange();
     }
 
     public void toggleFilters(View view) {
