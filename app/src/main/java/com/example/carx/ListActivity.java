@@ -31,6 +31,7 @@ public class ListActivity extends AppCompatActivity {
     EditText searchView;
     CheckBox suv, jdm, sc;
     ListView list;
+    LinearLayout noResults;
     protected void onSearchViewChange(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
@@ -62,6 +63,19 @@ public class ListActivity extends AppCompatActivity {
         CarListAdaptor listAdaptor = new CarListAdaptor(ListActivity.this, R.layout.custom_list_view, searchedCars);
         list.setAdapter(listAdaptor);
         listCars = searchedCars;
+        if(listCars.size() == 0) {
+            noResults.setVisibility(View.VISIBLE);
+            noResults.setAlpha(0);
+            noResults.animate()
+                    .alpha(1f)
+                    .start();
+        } else {
+            noResults.setAlpha(1);
+            noResults.animate()
+                    .alpha(0)
+                    .start();
+            noResults.setVisibility(View.GONE);
+        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +91,18 @@ public class ListActivity extends AppCompatActivity {
         }
         Intent a = getIntent();
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
-        LinearLayout noResults = findViewById(R.id.no_results_layout);
+        noResults = findViewById(R.id.no_results_layout);
         if(listCars.size() == 0) {
             noResults.setVisibility(View.VISIBLE);
+            noResults.setAlpha(0);
+            noResults.animate()
+                    .alpha(1f)
+                    .start();
         } else {
+            noResults.setAlpha(1);
+            noResults.animate()
+                    .alpha(0)
+                    .start();
             noResults.setVisibility(View.GONE);
         }
         list = (ListView) findViewById(R.id.carList);
