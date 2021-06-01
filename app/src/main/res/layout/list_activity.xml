@@ -75,17 +75,32 @@
         android:visibility="gone"
         android:orientation="vertical">
 
-        <CheckBox
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:buttonTint="@color/black"
-            android:text="OP1" />
+            android:text="OP1">
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:buttonTint="@color/black"
-            android:text="OP2" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:text="NONE"></RadioButton>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:text="PRICE: LOW TO HIGH"></RadioButton>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:text="PRICE: HIGH TO LOW"></RadioButton>
+
+        </RadioGroup>
 
         <Button
             android:id="@+id/CONFIRM"
