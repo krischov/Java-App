@@ -2,6 +2,7 @@ package com.example.carx;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -26,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     EditText searchView;
     Button searchButton;
+    Boolean jdmVisible;
     CheckBox suv, jdm, sc;
     @Override
     protected void onResume(){
@@ -105,6 +109,25 @@ public class MainActivity extends AppCompatActivity {
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
+
+        CardView suvCard = findViewById(R.id.SUVs);
+        CardView scCard = findViewById(R.id.SCs);
+        CardView jdmCard = findViewById(R.id.JDMs);
+        ScrollView mainScrollView = findViewById(R.id.main_scroll_view);
+        jdmVisible = false;
+        mainScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if(jdmCard.getWindowVisibility() == View.VISIBLE && jdmVisible == false){
+                    jdmVisible = true;
+                    jdmCard.setAlpha(0);
+                    jdmCard.animate()
+                            .alpha(1f)
+                            .start();
+                }
+            }
+        });
+
     }
 
     public void toSUVListActivity(View view){
