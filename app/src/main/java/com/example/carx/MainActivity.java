@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         mainScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if(jdmCard.getY() - height + 100 <= mainScrollView.getScrollY() && !jdmVisible){
+                if(jdmCard.getY() - height + 300 <= mainScrollView.getScrollY() && !jdmVisible){
                     jdmVisible = true;
                     jdmCard.setAlpha(0);
                     jdmCard.animate()
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             .setDuration(1000)
                             .start();
                 }
-                if(scCard.getY() - height + 100 <= mainScrollView.getScrollY() && !scVisible){
+                if(scCard.getY() - height + 300 <= mainScrollView.getScrollY() && !scVisible){
                     scVisible = true;
                     scCard.setAlpha(0);
                     scCard.animate()
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                             .setDuration(1000)
                             .start();
                 }
-                if(suvCard.getY() - height + 100 <= mainScrollView.getScrollY() && !suvVisible){
+                if(suvCard.getY() - height + 300 <= mainScrollView.getScrollY() && !suvVisible){
                     suvVisible = true;
                     suvCard.setAlpha(0);
                     suvCard.animate()
