@@ -64,11 +64,13 @@ public class ListActivity extends AppCompatActivity {
         list.setAdapter(listAdaptor);
         listCars = searchedCars;
         if(listCars.size() == 0) {
-            noResults.setVisibility(View.VISIBLE);
-            noResults.setAlpha(0);
-            noResults.animate()
-                    .alpha(1f)
-                    .start();
+            if(noResults.getVisibility() == View.GONE){
+                noResults.setVisibility(View.VISIBLE);
+                noResults.setAlpha(0);
+                noResults.animate()
+                        .alpha(1f)
+                        .start();
+            }
         } else {
             noResults.setAlpha(1);
             noResults.animate()
@@ -93,11 +95,13 @@ public class ListActivity extends AppCompatActivity {
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
         noResults = findViewById(R.id.no_results_layout);
         if(listCars.size() == 0) {
-            noResults.setVisibility(View.VISIBLE);
-            noResults.setAlpha(0);
-            noResults.animate()
-                    .alpha(1f)
-                    .start();
+            if(noResults.getVisibility() == View.GONE){
+                noResults.setVisibility(View.VISIBLE);
+                noResults.setAlpha(0);
+                noResults.animate()
+                        .alpha(1f)
+                        .start();
+            }
         } else {
             noResults.setAlpha(1);
             noResults.animate()
