@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setCustomView(R.layout.actionbar_layout);
             actionBar.setDisplayShowCustomEnabled(true);
         }
+
+        //This recyclerview was created by following this tutorial: https://guides.codepath.com/android/using-the-recyclerview
         // Lookup the recyclerview in activity layout
         RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
-
-        // Initialize contacts
+        // Initialize cars
         cars = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
         TopPicksAdapter adapter = new TopPicksAdapter(this, cars);
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         allSUVs = DataProvider.getAllSuvs();
         searchView = findViewById(R.id.search_for_cars);
 
+        //create custom functionality for pressing the enter key on the keyboard
+        //reference: https://stackoverflow.com/questions/4451374/use-enter-key-on-softkeyboard-instead-of-clicking-button
         searchView.setOnKeyListener(new View.OnKeyListener()
         {
             public boolean onKey(View v, int keyCode, KeyEvent event)
@@ -153,23 +156,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    //goes to the list activity and sends all SUVs as data
     public void toSUVListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSUVs);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
+    //goes to the list activity and sends all JDMs as data
     public void toJDMListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allJDMs);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
+    //goes to the list activity and sends all SCs as data
     public void toSupercarListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSupercars);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
-
+    //goes to the list activity after clicking the search button in the searchbar and sends the relevant cars as data
     public void onSearchQuery(View view) {
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
@@ -203,6 +208,8 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
     }
+
+    //goes to the list activity after pressing enter in the keyboard when searching and sends the relevant cars as data
     protected void onKeyboardEnter(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
@@ -230,12 +237,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
+        //go to list activity and send matching cars as data
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", searchedCars);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
+    //this toggles the search filters window (SUV, SC, JDM) when clicking the hamburger button in the searchbar
     public void toggleFilters(View view) {
         LinearLayout searchFilters = findViewById(R.id.search_filters);
         if (searchFilters.getVisibility() == View.GONE) {

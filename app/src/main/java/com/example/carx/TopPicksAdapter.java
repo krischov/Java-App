@@ -1,5 +1,5 @@
 package com.example.carx;
-
+//This adapter was created by following this tutorial: https://guides.codepath.com/android/using-the-recyclerview
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
