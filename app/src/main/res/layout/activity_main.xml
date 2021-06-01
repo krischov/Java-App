@@ -42,6 +42,7 @@
             android:layout_height="221dp"
             app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
+            android:alpha="0"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -89,6 +90,7 @@
             android:layout_height="221dp"
             app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
+            android:alpha="0"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -135,6 +137,7 @@
             app:cardCornerRadius="10dp"
             android:layout_marginBottom="40dp"
             android:id="@+id/JDMs"
+            android:alpha="0"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

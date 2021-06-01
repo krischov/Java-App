@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     EditText searchView;
     Button searchButton;
-    Boolean jdmVisible;
+    Boolean jdmVisible, scVisible, suvVisible;
     CheckBox suv, jdm, sc;
     @Override
     protected void onResume(){
@@ -115,16 +116,39 @@ public class MainActivity extends AppCompatActivity {
         CardView jdmCard = findViewById(R.id.JDMs);
         ScrollView mainScrollView = findViewById(R.id.main_scroll_view);
         jdmVisible = false;
+        scVisible = false;
+        suvVisible = false;
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
         mainScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if(jdmCard.isShown() && jdmVisible == false){
+                if(jdmCard.getY() - height + 100 <= mainScrollView.getScrollY() && !jdmVisible){
                     jdmVisible = true;
                     jdmCard.setAlpha(0);
                     jdmCard.animate()
                             .alpha(1f)
+                            .setDuration(1000)
                             .start();
                 }
+                if(scCard.getY() - height + 100 <= mainScrollView.getScrollY() && !scVisible){
+                    scVisible = true;
+                    scCard.setAlpha(0);
+                    scCard.animate()
+                            .alpha(1f)
+                            .setDuration(1000)
+                            .start();
+                }
+                if(suvCard.getY() - height + 100 <= mainScrollView.getScrollY() && !suvVisible){
+                    suvVisible = true;
+                    suvCard.setAlpha(0);
+                    suvCard.animate()
+                            .alpha(1f)
+                            .setDuration(1000)
+                            .start();
+                }
+
             }
         });
 
