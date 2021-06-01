@@ -5,42 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.SearchView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Cars> contacts, totalCars, allSUVs, allJDMs, allSupercars;
     DataProvider dataProvider;
-    ListView listView;
     EditText searchView;
     Button searchButton;
     Boolean jdmVisible, scVisible, suvVisible;
@@ -48,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
         // Initialize contacts
         contacts = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
-        ContactsAdapter adapter = new ContactsAdapter(this, contacts);
+        TopPicksAdapter adapter = new TopPicksAdapter(this, contacts);
         // Attach the adapter to the recyclerview to populate items
-        rvContacts.setAdapter(adapter);
+        rvTopPicks.setAdapter(adapter);
         // Set layout manager to position the items
-        rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rvTopPicks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +51,16 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowCustomEnabled(true);
         }
         // Lookup the recyclerview in activity layout
-        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
 
         // Initialize contacts
         contacts = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
-        ContactsAdapter adapter = new ContactsAdapter(this, contacts);
+        TopPicksAdapter adapter = new TopPicksAdapter(this, contacts);
         // Attach the adapter to the recyclerview to populate items
-        rvContacts.setAdapter(adapter);
+        rvTopPicks.setAdapter(adapter);
         // Set layout manager to position the items
-        rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rvTopPicks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         totalCars = dataProvider.getTotalCars();
         allJDMs = DataProvider.getAllJdms();
