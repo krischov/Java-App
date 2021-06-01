@@ -275,7 +275,7 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
-    //Function that sorts
+    //Function that sorts list either low to high or high to low prices
     public void sortList(View view){
 
         //Closes the menu when the button is clicked

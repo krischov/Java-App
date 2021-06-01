@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public abstract class Cars implements Serializable, Comparable<Cars> {
 
+    //Enum for carIDs
     enum CarID {
         SUV,
         SUPERCAR,
