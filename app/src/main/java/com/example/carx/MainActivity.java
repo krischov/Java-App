@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         mainScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if(jdmCard.getWindowVisibility() == View.VISIBLE && jdmVisible == false){
+                if(jdmCard.isShown() && jdmVisible == false){
                     jdmVisible = true;
                     jdmCard.setAlpha(0);
                     jdmCard.animate()
