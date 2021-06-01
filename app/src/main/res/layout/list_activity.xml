@@ -53,18 +53,27 @@
         android:paddingTop="20dp"
         android:paddingRight="20dp"></ListView>
 
-    
+
     <LinearLayout
-        android:id="@+id/FILTERS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <Button
             android:id="@+id/SORTBUTTON"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="toggleSortOptions"
             android:text="Sort Options"></Button>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/SORTING"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
 
         <CheckBox
             android:layout_width="match_parent"
