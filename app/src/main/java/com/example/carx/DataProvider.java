@@ -13,6 +13,9 @@ public class DataProvider {
 
     public DataProvider() {
         Log.e("recreating DP", "error");
+
+        //Declaration of all 30 cars.
+
         //JDMS
         Jdm jdm1 = new Jdm(
                 215000f,
@@ -369,6 +372,7 @@ public class DataProvider {
         this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
+    //Randomly generates num_topPicks of toppicks
     public ArrayList<Cars> getTopPicks(int num_topPicks) {
         ArrayList<Cars> realTopPicks = new ArrayList<Cars>();
         Collections.sort(this.totalCars, new Comparator<Cars>() {
