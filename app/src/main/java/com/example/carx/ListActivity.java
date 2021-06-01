@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,10 @@ public class ListActivity extends AppCompatActivity {
     CheckBox suv, jdm, sc;
     ListView list;
     LinearLayout noResults;
+    int RadioFlag = 0;
+
+
+
     protected void onSearchViewChange(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
@@ -222,7 +227,28 @@ public class ListActivity extends AppCompatActivity {
         else{
             sortFilters.setVisibility(View.GONE);
         }
+    }
 
+    //https://developer.android.com/guide/topics/ui/controls/radiobutton
+    public void onRadioButtonClicked(View view){
+        boolean isClicked = ((RadioButton) view).isChecked();
 
+        switch(view.getId()){
+            case R.id.NONE:
+                if(isClicked){
+                    RadioFlag = 0;
+                    break;
+                }
+            case R.id.H_L:
+                if(isClicked){
+                    RadioFlag = 1;
+                    break;
+                }
+            case R.id.L_H:
+                if(isClicked){
+                    RadioFlag = 2;
+                    break;
+                }
+        }
     }
 }

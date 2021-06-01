@@ -84,20 +84,26 @@
 
             <RadioButton
                 android:layout_width="match_parent"
+                android:id="@+id/NONE"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/black"
+                android:onClick="onRadioButtonClicked"
                 android:text="NONE"></RadioButton>
 
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/L_H"
                 android:buttonTint="@color/black"
+                android:onClick="onRadioButtonClicked"
                 android:text="PRICE: LOW TO HIGH"></RadioButton>
 
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/black"
+                android:id="@+id/H_L"
+                android:onClick="onRadioButtonClicked"
                 android:text="PRICE: HIGH TO LOW"></RadioButton>
 
         </RadioGroup>
