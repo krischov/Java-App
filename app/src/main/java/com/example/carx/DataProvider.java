@@ -372,9 +372,12 @@ public class DataProvider {
         this.allSuperCars = new ArrayList<Cars>(Arrays.asList(supercar1, supercar2, supercar3, supercar4, supercar5, supercar6, supercar7, supercar8, supercar9, supercar10));
     }
 
-    //Randomly generates num_topPicks of toppicks
+    //get the top picks based on the views count for each car and return in descending order
+    //create with the help of this following tutorial: https://stackoverflow.com/questions/16252269/how-to-sort-an-arraylist
     public ArrayList<Cars> getTopPicks(int num_topPicks) {
         ArrayList<Cars> realTopPicks = new ArrayList<Cars>();
+
+        //sort the cars based on the number of views in descending order
         Collections.sort(this.totalCars, new Comparator<Cars>() {
             @Override
             public int compare(Cars lhs, Cars rhs) {
@@ -382,6 +385,7 @@ public class DataProvider {
                 return lhs.views > rhs.views ? -1 : (lhs.views < rhs.views) ? 1 : 0;
             }
         });
+        //add the first num_topPicks amount of cars to the arrayList to be returned
         for(int i = 0; i < num_topPicks; i++){
             realTopPicks.add(totalCars.get(i));
         }
