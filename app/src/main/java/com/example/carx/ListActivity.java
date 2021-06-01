@@ -2,6 +2,7 @@ package com.example.carx;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -221,11 +222,17 @@ public class ListActivity extends AppCompatActivity {
 
     public void toggleSortOptions(View view){
         LinearLayout sortFilters = findViewById(R.id.SORTING);
+        Button push = findViewById(R.id.SORTBUTTON);
+        int UPARROW = (R.drawable.ic_baseline_arrow_drop_up_24);
+        int DOWNARROW = R.drawable.ic_baseline_arrow_drop_down_24;
+
         if(sortFilters.getVisibility() == View.GONE){
             sortFilters.setVisibility(View.VISIBLE);
+            push.setCompoundDrawablesWithIntrinsicBounds(DOWNARROW, 0, 0, 0);
         }
         else{
             sortFilters.setVisibility(View.GONE);
+            push.setCompoundDrawablesWithIntrinsicBounds(UPARROW, 0 , 0 ,0);
         }
     }
 
@@ -251,4 +258,5 @@ public class ListActivity extends AppCompatActivity {
                 }
         }
     }
+
 }
