@@ -53,4 +53,37 @@
         android:paddingTop="20dp"
         android:paddingRight="20dp"></ListView>
 
+    
+    <LinearLayout
+        android:id="@+id/FILTERS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/SORTBUTTON"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Sort Options"></Button>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/black"
+            android:text="OP1" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/black"
+            android:text="OP2" />
+
+        <Button
+            android:id="@+id/CONFIRM"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="Confirm"></Button>
+
+    </LinearLayout>
 </LinearLayout>
