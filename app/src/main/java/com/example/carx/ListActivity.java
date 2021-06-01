@@ -213,4 +213,16 @@ public class ListActivity extends AppCompatActivity {
                     .start();
         }
     }
+
+    public void toggleSortOptions(View view){
+        LinearLayout sortFilters = findViewById(R.id.SORTING);
+        if(sortFilters.getVisibility() == View.GONE){
+            sortFilters.setVisibility(View.VISIBLE);
+        }
+        else{
+            sortFilters.setVisibility(View.GONE);
+        }
+
+
+    }
 }
