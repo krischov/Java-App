@@ -5,6 +5,9 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+//Serializable to pass objects between views
+//Comparable to sort arraylists using a field e.g. price.
+
 public abstract class Cars implements Serializable, Comparable<Cars> {
 
     enum CarID {
@@ -87,6 +90,7 @@ public abstract class Cars implements Serializable, Comparable<Cars> {
         this.CarType = carType;
     }
 
+    //Function to get additional information of the child classes.
     public abstract String getAdditional();
 
 }
