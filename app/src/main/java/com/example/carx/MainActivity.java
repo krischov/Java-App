@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Cars> contacts, totalCars, allSUVs, allJDMs, allSupercars;
+    ArrayList<Cars> cars, totalCars, allSUVs, allJDMs, allSupercars;
     DataProvider dataProvider;
     EditText searchView;
     Button searchButton;
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
-        // Initialize contacts
-        contacts = dataProvider.getTopPicks(5);
+        // Initialize cars
+        cars = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
-        TopPicksAdapter adapter = new TopPicksAdapter(this, contacts);
+        TopPicksAdapter adapter = new TopPicksAdapter(this, cars);
         // Attach the adapter to the recyclerview to populate items
         rvTopPicks.setAdapter(adapter);
         // Set layout manager to position the items
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
 
         // Initialize contacts
-        contacts = dataProvider.getTopPicks(5);
+        cars = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
-        TopPicksAdapter adapter = new TopPicksAdapter(this, contacts);
+        TopPicksAdapter adapter = new TopPicksAdapter(this, cars);
         // Attach the adapter to the recyclerview to populate items
         rvTopPicks.setAdapter(adapter);
         // Set layout manager to position the items
@@ -113,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                             .alpha(1f)
                             .setDuration(1000)
                             .start();
+                } else if(jdmCard.getY() - height + 300 >= mainScrollView.getScrollY() && jdmVisible){
+                    jdmVisible = false;
+                    jdmCard.animate()
+                            .alpha(0f)
+                            .setDuration(1000)
+                            .start();
                 }
                 if(scCard.getY() - height + 300 <= mainScrollView.getScrollY() && !scVisible){
                     scVisible = true;
@@ -121,12 +127,24 @@ public class MainActivity extends AppCompatActivity {
                             .alpha(1f)
                             .setDuration(1000)
                             .start();
+                }else if(scCard.getY() - height + 300 >= mainScrollView.getScrollY() && scVisible){
+                    scVisible = false;
+                    scCard.animate()
+                            .alpha(0f)
+                            .setDuration(1000)
+                            .start();
                 }
                 if(suvCard.getY() - height + 300 <= mainScrollView.getScrollY() && !suvVisible){
                     suvVisible = true;
                     suvCard.setAlpha(0);
                     suvCard.animate()
                             .alpha(1f)
+                            .setDuration(1000)
+                            .start();
+                }else if(suvCard.getY() - height + 300 >= mainScrollView.getScrollY() && suvVisible){
+                    suvVisible = false;
+                    suvCard.animate()
+                            .alpha(0f)
                             .setDuration(1000)
                             .start();
                 }
