@@ -2,6 +2,8 @@ package com.example.carx;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.round;
+
 class Suv extends Cars{
     float groundClearance;
 
@@ -21,5 +23,11 @@ class Suv extends Cars{
 
     public float getGroundClearance() {
         return groundClearance;
+    }
+
+
+    @Override
+    public int compareTo(Cars o) {
+        return Integer.compare(round(price), round(o.price));
     }
 }

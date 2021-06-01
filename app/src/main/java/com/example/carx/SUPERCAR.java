@@ -2,6 +2,8 @@ package com.example.carx;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.round;
+
 class Supercar extends Cars{
     int maxSpeed;
 
@@ -18,5 +20,10 @@ class Supercar extends Cars{
 
     public void setGroundClearance(int maxSpeed) {
         this.maxSpeed = maxSpeed;
+    }
+
+    @Override
+    public int compareTo(Cars o) {
+        return Integer.compare(round(price), round(o.price));
     }
 }

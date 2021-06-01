@@ -5,7 +5,7 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Cars implements Serializable {
+public abstract class Cars implements Serializable, Comparable<Cars> {
 
     enum CarID {
         SUV,
@@ -88,4 +88,5 @@ public abstract class Cars implements Serializable {
     }
 
     public abstract String getAdditional();
+
 }

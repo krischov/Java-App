@@ -25,6 +25,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -259,4 +261,42 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
+    public void sortList(View view){
+        toggleSortOptions(view);
+        ArrayList<Cars> sortedList = listCars;
+
+
+        if(RadioFlag == 0){
+            //Do nothing
+        }
+
+        else if(RadioFlag == 1){
+            //PRICE HIGH TO LOW
+            Collections.sort(sortedList, new Comparator<Cars>() {
+                @Override
+                public int compare(Cars o1, Cars o2) {
+                    return o2.getPrice().compareTo(o1.getPrice());
+                }
+            });
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", sortedList);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+            //RELOAD THE ACTIVITY
+        }
+        else{
+            //PRICE LOW TO HIGH
+            Collections.sort(sortedList, new Comparator<Cars>() {
+                @Override
+                public int compare(Cars o1, Cars o2) {
+                    return o1.getPrice().compareTo(o2.getPrice());
+                }
+            });
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", sortedList);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            //RELOAD THE ACTIVITY
+        }
+
+    }
 }
