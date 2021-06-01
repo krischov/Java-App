@@ -12,6 +12,7 @@ import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,27 @@ public class MainActivity extends AppCompatActivity {
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
         searchView = findViewById(R.id.search_for_cars);
+
+        searchView.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            onKeyboardEnter();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
         searchButton = findViewById(R.id.search_button);
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
@@ -133,6 +155,38 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("Cars", searchedCars);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
+    }
+    protected void onKeyboardEnter(){
+        String search = searchView.getText().toString();
+        ArrayList<Cars> searchedCars = new ArrayList<>();
+        for (int i = 0; i < totalCars.size(); i++) {
+            Cars car = totalCars.get(i);
+            String name = car.name.toLowerCase();
+            if (name.contains(search.toLowerCase())) {
+                if (suv.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUV) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (jdm.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.JDM) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (sc.isChecked()) {
+                    if (car.getCarType() == Cars.CarID.SUPERCAR) {
+                        searchedCars.add(car);
+                    }
+                }
+                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                    searchedCars.add(car);
+                }
+            }
+        }
+
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("Cars", searchedCars);
+        this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void toggleFilters(View view) {

@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -102,6 +103,25 @@ public class ListActivity extends AppCompatActivity {
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
         searchView = findViewById(R.id.search_for_cars);
+        searchView.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            onKeyboardEnter();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
@@ -144,7 +164,9 @@ public class ListActivity extends AppCompatActivity {
     public void onSearchQuery(View view) {
         onSearchViewChange();
     }
-
+    private void onKeyboardEnter(){
+        onSearchViewChange();
+    }
     public void toggleFilters(View view) {
         LinearLayout searchFilters = findViewById(R.id.search_filters);
         if (searchFilters.getVisibility() == View.GONE) {
