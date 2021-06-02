@@ -126,7 +126,6 @@ public class ListActivity extends AppCompatActivity {
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
-        LinearLayout searchFilters = findViewById(R.id.search_filters);
 
         if(search.toLowerCase().equals("jdm")){
             jdm.setChecked(true);
@@ -333,7 +332,8 @@ public class ListActivity extends AppCompatActivity {
         //Closes the menu when the button is clicked
         toggleSortOptions(view);
         ArrayList<Cars> sortedList = listCars;
-
+        EditText searchbar = findViewById(R.id.search_for_cars);
+        String search = searchbar.getText().toString();
 
         if(RadioFlag == 0){
             //Do nothing
@@ -353,6 +353,7 @@ public class ListActivity extends AppCompatActivity {
             //Pass the data through to list activity
             Intent intent = new Intent(this, ListActivity.class);
             intent.putExtra("Cars", sortedList);
+            intent.putExtra("SString", search);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 2){
@@ -369,6 +370,7 @@ public class ListActivity extends AppCompatActivity {
             //Pass the data through to list activity
             Intent intent = new Intent(this, ListActivity.class);
             intent.putExtra("Cars", sortedList);
+            intent.putExtra("SString", search);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 3) {
@@ -398,6 +400,7 @@ public class ListActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, ListActivity.class);
             intent.putExtra("Cars", sortedList);
+            intent.putExtra("SString", search);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
         }
@@ -428,6 +431,7 @@ public class ListActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, ListActivity.class);
             intent.putExtra("Cars", sortedList);
+            intent.putExtra("SString", search);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
     }
