@@ -48,8 +48,10 @@ public class ListActivity extends AppCompatActivity {
         String finalSearch = "Results for: " + search;
         TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
         SSTRING.setText(finalSearch);
-        for (int i = 0; i < totalCars.size(); i++) {
-            Cars car = totalCars.get(i);
+
+
+        for (int i = 0; i < listCars.size(); i++) {
+            Cars car = listCars.get(i);
             String name = car.name.toLowerCase();
             if (name.contains(search.toLowerCase())) {
                 if (suv.isChecked()) {

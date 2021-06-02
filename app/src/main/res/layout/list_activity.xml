@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:paddingLeft="25dp"
+        android:paddingBottom="10dp"
         android:paddingRight="25dp"
         android:text="SHOWING RESULTS FOR TEST"></TextView>
 

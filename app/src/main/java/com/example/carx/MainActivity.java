@@ -159,18 +159,21 @@ public class MainActivity extends AppCompatActivity {
     public void toSUVListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSUVs);
+        intent.putExtra("SString", "SUV");
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
     //goes to the list activity and sends all JDMs as data
     public void toJDMListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allJDMs);
+        intent.putExtra("SString", "JDM");
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
     //goes to the list activity and sends all SCs as data
     public void toSupercarListActivity(View view){
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", allSupercars);
+        intent.putExtra("SString", "SUPERCARS");
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
     //goes to the list activity after clicking the search button in the searchbar and sends the relevant cars as data
