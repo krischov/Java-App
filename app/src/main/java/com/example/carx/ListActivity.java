@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -52,8 +53,8 @@ public class ListActivity extends AppCompatActivity {
         SSTRING.setText(finalSearch);
 
 
-        for (int i = 0; i < listCars.size(); i++) {
-            Cars car = listCars.get(i);
+        for (int i = 0; i < totalCars.size(); i++) {
+            Cars car = totalCars.get(i);
             String name = car.name.toLowerCase();
             if (name.contains(search.toLowerCase())) {
                 if (suv.isChecked()) {
@@ -120,6 +121,24 @@ public class ListActivity extends AppCompatActivity {
         String finalSearch = "Results for: " + search;
         SSTRING.setText(finalSearch);
 
+        //set the filters based on the appropriate category applied
+
+        suv = findViewById(R.id.suv_cb);
+        jdm = findViewById(R.id.jdm_cb);
+        sc = findViewById(R.id.sc_cb);
+        LinearLayout searchFilters = findViewById(R.id.search_filters);
+
+        if(search.toLowerCase().equals("jdm")){
+            jdm.setChecked(true);
+            listCars = DataProvider.getAllJdms();
+        } else if(search.toLowerCase().equals("suv")){
+            suv.setChecked(true);
+            listCars = DataProvider.getAllSuvs();
+        } else if(search.toLowerCase().equals("supercar")){
+            listCars = DataProvider.getAllHyperCars();
+            sc.setChecked(true);
+        }
+
         //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
             if(noResults.getVisibility() == View.GONE){
@@ -179,9 +198,7 @@ public class ListActivity extends AppCompatActivity {
                 return false;
             }
         });
-        suv = findViewById(R.id.suv_cb);
-        jdm = findViewById(R.id.jdm_cb);
-        sc = findViewById(R.id.sc_cb);
+
 
         //run onSearchViewChange() when the SUV checkbox changes which updates the list activity results with relevant cars
         suv.setOnClickListener(new View.OnClickListener() {
