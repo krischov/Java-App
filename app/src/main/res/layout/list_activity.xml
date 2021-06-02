@@ -9,6 +9,16 @@
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/SSTRING"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="SHOWING RESULTS FOR TEST"></TextView>
+
     <LinearLayout
         android:id="@+id/no_results_layout"
         android:layout_width="match_parent"
