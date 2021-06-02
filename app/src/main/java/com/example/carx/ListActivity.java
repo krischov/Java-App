@@ -133,7 +133,7 @@ public class ListActivity extends AppCompatActivity {
         } else if(search.toLowerCase().equals("suv")){
             suv.setChecked(true);
             listCars = DataProvider.getAllSuvs();
-        } else if(search.toLowerCase().equals("supercar")){
+        } else if(search.toLowerCase().equals("supercars")){
             listCars = DataProvider.getAllHyperCars();
             sc.setChecked(true);
         }
