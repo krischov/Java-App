@@ -119,6 +119,22 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="PRICE: HIGH TO LOW"></RadioButton>
 
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:id="@+id/NEW"
+                android:onClick="onRadioButtonClicked"
+                android:text="CONDITION: NEW"></RadioButton>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:id="@+id/NO_NEW"
+                android:onClick="onRadioButtonClicked"
+                android:text="CONDITION: OLD"></RadioButton>
+
         </RadioGroup>
 
         <Button
