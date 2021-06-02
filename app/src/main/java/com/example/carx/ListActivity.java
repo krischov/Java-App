@@ -81,6 +81,7 @@ public class ListActivity extends AppCompatActivity {
         CarListAdaptor listAdaptor = new CarListAdaptor(ListActivity.this, R.layout.custom_list_view, searchedCars);
         list.setAdapter(listAdaptor);
         listCars = searchedCars;
+
         //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
             if(noResults.getVisibility() == View.GONE){
@@ -351,10 +352,12 @@ public class ListActivity extends AppCompatActivity {
 
             //Reopen the list activity using the sorted list
             //Pass the data through to list activity
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", sortedList);
-            intent.putExtra("SString", search);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+            listCars = sortedList;
+//            Intent intent = new Intent(this, ListActivity.class);
+//            intent.putExtra("Cars", sortedList);
+//            intent.putExtra("SString", search);
+//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 2){
             //PRICE LOW TO HIGH
@@ -368,10 +371,11 @@ public class ListActivity extends AppCompatActivity {
 
             //Reopen the list activity using the sorted list
             //Pass the data through to list activity
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", sortedList);
-            intent.putExtra("SString", search);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            listCars = sortedList;
+//            Intent intent = new Intent(this, ListActivity.class);
+//            intent.putExtra("Cars", sortedList);
+//            intent.putExtra("SString", search);
+//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 3) {
 
@@ -397,11 +401,11 @@ public class ListActivity extends AppCompatActivity {
                     return Integer.compare(o2FN, o1FN);
                 }
             });
-
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", sortedList);
-            intent.putExtra("SString", search);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            listCars = sortedList;
+//            Intent intent = new Intent(this, ListActivity.class);
+//            intent.putExtra("Cars", sortedList);
+//            intent.putExtra("SString", search);
+//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
         }
 
@@ -429,10 +433,12 @@ public class ListActivity extends AppCompatActivity {
                 }
             });
 
-            Intent intent = new Intent(this, ListActivity.class);
-            intent.putExtra("Cars", sortedList);
-            intent.putExtra("SString", search);
-            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+            listCars = sortedList;
+//            Intent intent = new Intent(this, ListActivity.class);
+//            intent.putExtra("Cars", sortedList);
+//            intent.putExtra("SString", search);
+//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
     }
 }
