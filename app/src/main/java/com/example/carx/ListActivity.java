@@ -125,15 +125,16 @@ public class ListActivity extends AppCompatActivity {
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
         LinearLayout searchFilters = findViewById(R.id.search_filters);
-        searchFilters.setVisibility(View.VISIBLE);
 
-        if(search.equals("JDM")){
+        if(search.toLowerCase().equals("jdm")){
             jdm.setChecked(true);
-        } else if(search.equals("SUV")){
+            listCars = DataProvider.getAllJdms();
+        } else if(search.toLowerCase().equals("suv")){
             suv.setChecked(true);
-        } else if(search.equals("SUPERCAR")){
+            listCars = DataProvider.getAllSuvs();
+        } else if(search.toLowerCase().equals("supercar")){
+            listCars = DataProvider.getAllHyperCars();
             sc.setChecked(true);
-        } else {
         }
 
         //If there are no search results show the no results available message, else hide the message

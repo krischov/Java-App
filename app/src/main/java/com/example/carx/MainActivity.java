@@ -243,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         //go to list activity and send matching cars as data
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", searchedCars);
+        intent.putExtra("SString", search);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
