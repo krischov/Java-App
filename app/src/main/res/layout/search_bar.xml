@@ -64,17 +64,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-6dp"
-            android:background="#FF5722"
+            android:background="@drawable/search_bar_shape"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:paddingBottom="3dp"
             android:translationZ="-1dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/search_bar_shape_inner"
                 android:orientation="vertical"
                 android:padding="20dp">
 
