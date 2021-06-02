@@ -107,6 +107,11 @@ public class ListActivity extends AppCompatActivity {
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
         noResults = findViewById(R.id.no_results_layout);
 
+        String search = (String) a.getSerializableExtra("SString");
+        TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
+        String finalSearch = "Results for: " + search;
+        SSTRING.setText(finalSearch);
+
         //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
             if(noResults.getVisibility() == View.GONE){

@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("Cars", searchedCars);
+        intent.putExtra("SString", search);
         this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
     }
