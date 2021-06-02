@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             public void onScrollChanged() {
                 if(jdmCard.getY() - height + 300 <= mainScrollView.getScrollY() && !jdmVisible){
                     jdmVisible = true;
-                    jdmCard.setAlpha(0);
                     jdmCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
@@ -127,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(scCard.getY() - height + 300 <= mainScrollView.getScrollY() && !scVisible){
                     scVisible = true;
-                    scCard.setAlpha(0);
                     scCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
@@ -141,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(suvCard.getY() - height + 300 <= mainScrollView.getScrollY() && !suvVisible){
                     suvVisible = true;
-                    suvCard.setAlpha(0);
                     suvCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
