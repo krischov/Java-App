@@ -39,7 +39,8 @@ public class ListActivity extends AppCompatActivity {
     int RadioFlag = 0;
 
 
-
+    //method is called when the search view related inputs are changed, such as the search filters, and when the text in the search bar changes
+    //this method updates the list adaptor with the new cars that fit the current search query and filters
     protected void onSearchViewChange(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
@@ -71,6 +72,7 @@ public class ListActivity extends AppCompatActivity {
         CarListAdaptor listAdaptor = new CarListAdaptor(ListActivity.this, R.layout.custom_list_view, searchedCars);
         list.setAdapter(listAdaptor);
         listCars = searchedCars;
+        //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
             if(noResults.getVisibility() == View.GONE){
                 noResults.setVisibility(View.VISIBLE);
@@ -105,6 +107,7 @@ public class ListActivity extends AppCompatActivity {
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
         noResults = findViewById(R.id.no_results_layout);
 
+        //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
             if(noResults.getVisibility() == View.GONE){
                 noResults.setVisibility(View.VISIBLE);
@@ -141,6 +144,9 @@ public class ListActivity extends AppCompatActivity {
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
         searchView = findViewById(R.id.search_for_cars);
+
+        //create custom functionality for pressing the enter key on the keyboard
+        //reference: https://stackoverflow.com/questions/4451374/use-enter-key-on-softkeyboard-instead-of-clicking-button
         searchView.setOnKeyListener(new View.OnKeyListener()
         {
             public boolean onKey(View v, int keyCode, KeyEvent event)
@@ -163,24 +169,29 @@ public class ListActivity extends AppCompatActivity {
         suv = findViewById(R.id.suv_cb);
         jdm = findViewById(R.id.jdm_cb);
         sc = findViewById(R.id.sc_cb);
+
+        //run onSearchViewChange() when the SUV checkbox changes which updates the list activity results with relevant cars
         suv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                onSearchViewChange();
             }
         });
+        //run onSearchViewChange() when the SC checkbox changes which updates the list activity results with relevant cars
         sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearchViewChange();
             }
         });
+        //run onSearchViewChange() when the JDM checkbox changes which updates the list activity results with relevant cars
         jdm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearchViewChange();
             }
         });
+        //run onSearchViewChange() when the text in searchbar changes which updates the list activity results with relevant cars
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
