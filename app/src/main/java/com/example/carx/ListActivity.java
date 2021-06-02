@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import static java.lang.Math.round;
+
 public class ListActivity extends AppCompatActivity {
 
     ListActivity LA;
@@ -294,6 +296,17 @@ public class ListActivity extends AppCompatActivity {
                     RadioFlag = 2;
                     break;
                 }
+            case R.id.NEW:
+                if(isClicked){
+                    RadioFlag = 3;
+                    break;
+                }
+            case R.id.NO_NEW:
+                if(isClicked){
+                    RadioFlag = 4;
+                    break;
+                }
+
         }
     }
 
@@ -325,7 +338,7 @@ public class ListActivity extends AppCompatActivity {
             intent.putExtra("Cars", sortedList);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
-        else{
+        else if(RadioFlag == 2){
             //PRICE LOW TO HIGH
             Collections.sort(sortedList, new Comparator<Cars>() {
                 @Override
@@ -341,6 +354,64 @@ public class ListActivity extends AppCompatActivity {
             intent.putExtra("Cars", sortedList);
             this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
+        else if(RadioFlag == 3) {
 
+            Collections.sort(sortedList, new Comparator<Cars>() {
+                @Override
+                public int compare(Cars o1, Cars o2) {
+                    int o1FN;
+                    int o2FN;
+
+                    if (o2.factoryNew == false) {
+                        o2FN = 0;
+                    } else {
+                        o2FN = 1;
+                    }
+
+                    if (o1.factoryNew == false) {
+                        o1FN = 0;
+                    } else {
+                        o1FN = 1;
+                    }
+
+
+                    return Integer.compare(o2FN, o1FN);
+                }
+            });
+
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", sortedList);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+        }
+
+        else{
+            Collections.sort(sortedList, new Comparator<Cars>() {
+                @Override
+                public int compare(Cars o1, Cars o2) {
+                    int o1FN;
+                    int o2FN;
+
+                    if (o2.factoryNew == false) {
+                        o2FN = 0;
+                    } else {
+                        o2FN = 1;
+                    }
+
+                    if (o1.factoryNew == false) {
+                        o1FN = 0;
+                    } else {
+                        o1FN = 1;
+                    }
+
+
+                    return Integer.compare(o1FN, o2FN);
+                }
+            });
+
+            Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("Cars", sortedList);
+            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
     }
 }
