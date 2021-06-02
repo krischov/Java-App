@@ -44,6 +44,10 @@ public class ListActivity extends AppCompatActivity {
     protected void onSearchViewChange(){
         String search = searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
+
+        String finalSearch = "Results for: " + search;
+        TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
+        SSTRING.setText(finalSearch);
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name.toLowerCase();
@@ -107,8 +111,8 @@ public class ListActivity extends AppCompatActivity {
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
         noResults = findViewById(R.id.no_results_layout);
 
-        String search = (String) a.getSerializableExtra("SString");
         TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
+        String search = (String) a.getSerializableExtra("SString");
         String finalSearch = "Results for: " + search;
         SSTRING.setText(finalSearch);
 
