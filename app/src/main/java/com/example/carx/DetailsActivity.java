@@ -18,29 +18,45 @@ import static com.example.carx.Cars.CarID.SUV;
 import static java.lang.Boolean.TRUE;
 
 public class DetailsActivity extends AppCompatActivity {
+    class ViewHolder {
+        TextView carViews, Name, viewed_Category, Price, Desc, FactoryNew, secondProperty;
+        ViewPager viewpager;
+
+        public ViewHolder() {
+            carViews = (TextView) findViewById(R.id.car_views);
+            Name = (TextView) findViewById(R.id.NAME);
+            viewed_Category = (TextView) findViewById(R.id.CATEGORY);
+            Price = (TextView) findViewById(R.id.PRICE);
+            Desc = (TextView) findViewById(R.id.DESCRIPTION);
+            FactoryNew = (TextView) findViewById(R.id.ad1);
+            secondProperty = (TextView) findViewById(R.id.ad2);
+            viewpager = (ViewPager) findViewById(R.id.pager);
+        }
+    }
+
+    ViewHolder vh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //Receives information from top picks/list activity
         Intent a = getIntent();
-        Cars carToShow = (Cars)a.getSerializableExtra("Car");
+        Cars carToShow = (Cars) a.getSerializableExtra("Car");
         setContentView(R.layout.details_activity);
-
+        vh = new ViewHolder();
         ActionBar actionBar = getSupportActionBar();
 
         String carName = carToShow.name;
         ArrayList<Cars> totalCars = DataProvider.totalCars;
 
         //loop to increment views everytime a car is opened in details activity
-        for(int i = 0; i < totalCars.size(); i++){
+        for (int i = 0; i < totalCars.size(); i++) {
             String totalCarName = totalCars.get(i).name;
-            if( totalCarName.equals(carName)){
+            if (totalCarName.equals(carName)) {
                 carToShow.incrementViews(i);
-                TextView carViews = findViewById(R.id.car_views);
+
                 int totalViews = DataProvider.totalCars.get(i).views;
-                carViews.setText(totalViews + (totalViews > 1 ? " Views" : " View"));
+                vh.carViews.setText(totalViews + (totalViews > 1 ? " Views" : " View"));
                 break;
             }
         }
@@ -52,59 +68,47 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         String carType;
-        if(carToShow.getCarType() == SUV) {
+        if (carToShow.getCarType() == SUV) {
             carType = "SUV";
-        }
-        else if (carToShow.getCarType() == Cars.CarID.JDM){
+        } else if (carToShow.getCarType() == Cars.CarID.JDM) {
             carType = "JDM";
-        }
-        else{
+        } else {
             carType = "SUPERCAR";
         }
 
         //Update view name
-        TextView Name = (TextView) findViewById(R.id.NAME);
-        Name.setText(carToShow.name);
+        vh.Name.setText(carToShow.name);
 
         //Update view car type
-        TextView viewed_Category = (TextView) findViewById(R.id.CATEGORY);
-        viewed_Category.setText(carType);
+        vh.viewed_Category.setText(carType);
 
         //Update view price
-        TextView Price = (TextView) findViewById(R.id.PRICE);
-        Price.setText("NZD$"+ carToShow.price.toString());
+        vh.Price.setText("NZD$" + carToShow.price.toString());
 
         //Update view description
-        TextView Desc = (TextView) findViewById(R.id.DESCRIPTION);
-        Desc.setText(carToShow.description);
+
+        vh.Desc.setText(carToShow.description);
 
         //Update if car is factory new
-        TextView FactoryNew = (TextView) findViewById(R.id.ad1);
-        if(carToShow.getFactoryNew() == TRUE) {
-            FactoryNew.setText("Factory New: YES");
-        }
-        else {
-            FactoryNew.setText("Factory New: NO");
+        if (carToShow.getFactoryNew() == TRUE) {
+            vh.FactoryNew.setText("Factory New: YES");
+        } else {
+            vh.FactoryNew.setText("Factory New: NO");
         }
 
         //Show the ground clearance/max speed/customised (Dependent on the car type (SUV/JDM/SUPERCAR)
-        TextView secondProperty = (TextView) findViewById(R.id.ad2);
         String adInfo = carToShow.getAdditional();
-        if(carToShow.getCarType() == SUV){
-            secondProperty.setText("Ground Clearance: " + adInfo + " mm");
+        if (carToShow.getCarType() == SUV) {
+            vh.secondProperty.setText("Ground Clearance: " + adInfo + " mm");
+        } else if (carToShow.getCarType() == SUPERCAR) {
+            vh.secondProperty.setText("Maximum Speed: " + adInfo + " km/h");
+        } else {
+            vh.secondProperty.setText("Customised: " + adInfo);
         }
-        else if(carToShow.getCarType() == SUPERCAR){
-            secondProperty.setText("Maximum Speed: " + adInfo + " km/h");
-        }
-        else{
-            secondProperty.setText("Customised: " + adInfo);
-        }
-
 
         //Custom View Pager adapter for showing the 3 images
-        ViewPager viewpager = (ViewPager) findViewById(R.id.pager);
         ImageViewAdapter ImageAdapter = new ImageViewAdapter(this, carToShow.photos);
-        viewpager.setAdapter(ImageAdapter);
+        vh.viewpager.setAdapter(ImageAdapter);
 
 
     }
