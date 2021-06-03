@@ -20,31 +20,47 @@ import android.widget.ScrollView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    class ViewHolder {
+        EditText searchView;
+        Button searchButton;
+        CheckBox suv, jdm, sc;
+        RecyclerView rvTopPicks;
+        CardView suvCard, scCard, jdmCard;
+        public ViewHolder(){
+            rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
+            searchButton = findViewById(R.id.search_button);
+            suv = findViewById(R.id.suv_cb);
+            jdm = findViewById(R.id.jdm_cb);
+            sc = findViewById(R.id.sc_cb);
+            searchView = findViewById(R.id.search_for_cars);
+            suvCard = findViewById(R.id.SUVs);
+            scCard = findViewById(R.id.SCs);
+            jdmCard = findViewById(R.id.JDMs);
+        }
+    }
     ArrayList<Cars> cars, totalCars, allSUVs, allJDMs, allSupercars;
     DataProvider dataProvider;
-    EditText searchView;
-    Button searchButton;
     Boolean jdmVisible, scVisible, suvVisible;
-    CheckBox suv, jdm, sc;
+    ViewHolder vh;
     @Override
     protected void onResume(){
         super.onResume();
-        RecyclerView rvTopPicks = (RecyclerView) findViewById(R.id.rvTopPicks);
+
         // Initialize cars
         cars = dataProvider.getTopPicks(5);
         // Create adapter passing in the sample user data
         TopPicksAdapter adapter = new TopPicksAdapter(this, cars);
         // Attach the adapter to the recyclerview to populate items
-        rvTopPicks.setAdapter(adapter);
+        vh.rvTopPicks.setAdapter(adapter);
         // Set layout manager to position the items
-        rvTopPicks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        vh.rvTopPicks.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.dataProvider = new DataProvider();
+        vh = new ViewHolder();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
@@ -67,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
         allJDMs = DataProvider.getAllJdms();
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
-        searchView = findViewById(R.id.search_for_cars);
+
 
         //create custom functionality for pressing the enter key on the keyboard
         //reference: https://stackoverflow.com/questions/4451374/use-enter-key-on-softkeyboard-instead-of-clicking-button
-        searchView.setOnKeyListener(new View.OnKeyListener()
+        vh.searchView.setOnKeyListener(new View.OnKeyListener()
         {
             public boolean onKey(View v, int keyCode, KeyEvent event)
             {
@@ -91,14 +107,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        searchButton = findViewById(R.id.search_button);
-        suv = findViewById(R.id.suv_cb);
-        jdm = findViewById(R.id.jdm_cb);
-        sc = findViewById(R.id.sc_cb);
 
-        CardView suvCard = findViewById(R.id.SUVs);
-        CardView scCard = findViewById(R.id.SCs);
-        CardView jdmCard = findViewById(R.id.JDMs);
+
         ScrollView mainScrollView = findViewById(R.id.main_scroll_view);
         jdmVisible = false;
         scVisible = false;
@@ -111,41 +121,41 @@ public class MainActivity extends AppCompatActivity {
         mainScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if(jdmCard.getY() - height + 300 <= mainScrollView.getScrollY() && !jdmVisible){
+                if(vh.jdmCard.getY() - height + 300 <= mainScrollView.getScrollY() && !jdmVisible){
                     jdmVisible = true;
-                    jdmCard.animate()
+                    vh.jdmCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
                             .start();
-                } else if(jdmCard.getY() - height + 300 >= mainScrollView.getScrollY() && jdmVisible){
+                } else if(vh.jdmCard.getY() - height + 300 >= mainScrollView.getScrollY() && jdmVisible){
                     jdmVisible = false;
-                    jdmCard.animate()
+                    vh.jdmCard.animate()
                             .alpha(0f)
                             .setDuration(1000)
                             .start();
                 }
-                if(scCard.getY() - height + 300 <= mainScrollView.getScrollY() && !scVisible){
+                if(vh.scCard.getY() - height + 300 <= mainScrollView.getScrollY() && !scVisible){
                     scVisible = true;
-                    scCard.animate()
+                    vh.scCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
                             .start();
-                }else if(scCard.getY() - height + 300 >= mainScrollView.getScrollY() && scVisible){
+                }else if(vh.scCard.getY() - height + 300 >= mainScrollView.getScrollY() && scVisible){
                     scVisible = false;
-                    scCard.animate()
+                    vh.scCard.animate()
                             .alpha(0f)
                             .setDuration(1000)
                             .start();
                 }
-                if(suvCard.getY() - height + 300 <= mainScrollView.getScrollY() && !suvVisible){
+                if(vh.suvCard.getY() - height + 300 <= mainScrollView.getScrollY() && !suvVisible){
                     suvVisible = true;
-                    suvCard.animate()
+                    vh.suvCard.animate()
                             .alpha(1f)
                             .setDuration(1000)
                             .start();
-                }else if(suvCard.getY() - height + 300 >= mainScrollView.getScrollY() && suvVisible){
+                }else if(vh.suvCard.getY() - height + 300 >= mainScrollView.getScrollY() && suvVisible){
                     suvVisible = false;
-                    suvCard.animate()
+                    vh.suvCard.animate()
                             .alpha(0f)
                             .setDuration(1000)
                             .start();
@@ -178,28 +188,28 @@ public class MainActivity extends AppCompatActivity {
     }
     //goes to the list activity after clicking the search button in the searchbar and sends the relevant cars as data
     public void onSearchQuery(View view) {
-        String search = searchView.getText().toString();
+        String search = vh.searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name.toLowerCase();
             if (name.contains(search.toLowerCase())) {
-                if (suv.isChecked()) {
+                if (vh.suv.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUV) {
                         searchedCars.add(car);
                     }
                 }
-                if (jdm.isChecked()) {
+                if (vh.jdm.isChecked()) {
                     if (car.getCarType() == Cars.CarID.JDM) {
                         searchedCars.add(car);
                     }
                 }
-                if (sc.isChecked()) {
+                if (vh.sc.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUPERCAR) {
                         searchedCars.add(car);
                     }
                 }
-                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                if (!vh.suv.isChecked() && !vh.jdm.isChecked() && !vh.sc.isChecked()) {
                     searchedCars.add(car);
                 }
             }
@@ -214,28 +224,28 @@ public class MainActivity extends AppCompatActivity {
 
     //goes to the list activity after pressing enter in the keyboard when searching and sends the relevant cars as data
     protected void onKeyboardEnter(){
-        String search = searchView.getText().toString();
+        String search = vh.searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name.toLowerCase();
             if (name.contains(search.toLowerCase())) {
-                if (suv.isChecked()) {
+                if (vh.suv.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUV) {
                         searchedCars.add(car);
                     }
                 }
-                if (jdm.isChecked()) {
+                if (vh.jdm.isChecked()) {
                     if (car.getCarType() == Cars.CarID.JDM) {
                         searchedCars.add(car);
                     }
                 }
-                if (sc.isChecked()) {
+                if (vh.sc.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUPERCAR) {
                         searchedCars.add(car);
                     }
                 }
-                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                if (!vh.suv.isChecked() && !vh.jdm.isChecked() && !vh.sc.isChecked()) {
                     searchedCars.add(car);
                 }
             }
