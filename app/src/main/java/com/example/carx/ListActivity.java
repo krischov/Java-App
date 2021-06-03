@@ -32,79 +32,94 @@ import java.util.Comparator;
 import static java.lang.Math.round;
 
 public class ListActivity extends AppCompatActivity {
+    class ViewHolder {
+        EditText searchView;
+        CheckBox suv, jdm, sc;
+        ListView list;
+        LinearLayout noResults;
+        TextView SSTRING;
 
-    ListActivity LA;
+        public ViewHolder(){
+            suv = findViewById(R.id.suv_cb);
+            jdm = findViewById(R.id.jdm_cb);
+            sc = findViewById(R.id.sc_cb);
+            noResults = findViewById(R.id.no_results_layout);
+            list = (ListView) findViewById(R.id.carList);
+            searchView = findViewById(R.id.search_for_cars);
+            SSTRING = (TextView) findViewById(R.id.SSTRING);
+        }
+    }
+
     ArrayList<Cars> totalCars, allSUVs, allJDMs, allSupercars, listCars;
-    EditText searchView;
-    CheckBox suv, jdm, sc;
-    ListView list;
-    LinearLayout noResults;
     int RadioFlag = 0;
-
+    ViewHolder vh;
 
     //method is called when the search view related inputs are changed, such as the search filters, and when the text in the search bar changes
     //this method updates the list adaptor with the new cars that fit the current search query and filters
     protected void onSearchViewChange(){
-        String search = searchView.getText().toString();
+        String search = vh.searchView.getText().toString();
         ArrayList<Cars> searchedCars = new ArrayList<>();
 
         String finalSearch = "Results for: " + search;
-        TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
-        SSTRING.setText(finalSearch);
+
+        vh.SSTRING.setText(finalSearch);
 
 
         for (int i = 0; i < totalCars.size(); i++) {
             Cars car = totalCars.get(i);
             String name = car.name.toLowerCase();
             if (name.contains(search.toLowerCase())) {
-                if (suv.isChecked()) {
+                if (vh.suv.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUV) {
                         searchedCars.add(car);
                     }
                 }
-                if (jdm.isChecked()) {
+                if (vh.jdm.isChecked()) {
                     if (car.getCarType() == Cars.CarID.JDM) {
                         searchedCars.add(car);
                     }
                 }
-                if (sc.isChecked()) {
+                if (vh.sc.isChecked()) {
                     if (car.getCarType() == Cars.CarID.SUPERCAR) {
                         searchedCars.add(car);
                     }
                 }
-                if (!suv.isChecked() && !jdm.isChecked() && !sc.isChecked()) {
+                if (!vh.suv.isChecked() && !vh.jdm.isChecked() && !vh.sc.isChecked()) {
                     searchedCars.add(car);
                 }
             }
         }
 
         CarListAdaptor listAdaptor = new CarListAdaptor(ListActivity.this, R.layout.custom_list_view, searchedCars);
-        list.setAdapter(listAdaptor);
+        vh.list.setAdapter(listAdaptor);
         listCars = searchedCars;
 
         //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
-            if(noResults.getVisibility() == View.GONE){
-                noResults.setVisibility(View.VISIBLE);
-                noResults.setAlpha(0);
-                noResults.animate()
+            if(vh.noResults.getVisibility() == View.GONE){
+                vh.noResults.setVisibility(View.VISIBLE);
+                vh.noResults.setAlpha(0);
+                vh.noResults.animate()
                         .alpha(1f)
                         .start();
             }
         } else {
-            noResults.setAlpha(1);
-            noResults.animate()
+            vh.noResults.setAlpha(1);
+            vh.noResults.animate()
                     .alpha(0)
                     .start();
-            noResults.setVisibility(View.GONE);
+            vh.noResults.setVisibility(View.GONE);
         }
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
         ActionBar actionBar = getSupportActionBar();
-        LA = this;
+
+        vh = new ViewHolder();
 
         if (actionBar != null) {
             actionBar.setCustomView(R.layout.actionbar_layout);
@@ -115,7 +130,7 @@ public class ListActivity extends AppCompatActivity {
         //Receive information from previous activity (Array List of cars)
         Intent a = getIntent();
         listCars = (ArrayList<Cars>)a.getSerializableExtra("Cars");
-        noResults = findViewById(R.id.no_results_layout);
+
 
         TextView SSTRING = (TextView) findViewById(R.id.SSTRING);
         String search = (String) a.getSerializableExtra("SString");
@@ -124,50 +139,47 @@ public class ListActivity extends AppCompatActivity {
 
         //set the filters based on the appropriate category applied
 
-        suv = findViewById(R.id.suv_cb);
-        jdm = findViewById(R.id.jdm_cb);
-        sc = findViewById(R.id.sc_cb);
+
 
         if(search.toLowerCase().equals("jdm")){
-            jdm.setChecked(true);
+            vh.jdm.setChecked(true);
             listCars = DataProvider.getAllJdms();
         } else if(search.toLowerCase().equals("suv")){
-            suv.setChecked(true);
+            vh.suv.setChecked(true);
             listCars = DataProvider.getAllSuvs();
         } else if(search.toLowerCase().equals("supercars")){
             listCars = DataProvider.getAllHyperCars();
-            sc.setChecked(true);
+            vh.sc.setChecked(true);
         }
 
         //If there are no search results show the no results available message, else hide the message
         if(listCars.size() == 0) {
-            if(noResults.getVisibility() == View.GONE){
-                noResults.setVisibility(View.VISIBLE);
-                noResults.setAlpha(0);
-                noResults.animate()
+            if(vh.noResults.getVisibility() == View.GONE){
+                vh.noResults.setVisibility(View.VISIBLE);
+                vh.noResults.setAlpha(0);
+                vh.noResults.animate()
                         .alpha(1f)
                         .start();
             }
         } else {
-            noResults.setAlpha(1);
-            noResults.animate()
+            vh.noResults.setAlpha(1);
+            vh.noResults.animate()
                     .alpha(0)
                     .start();
-            noResults.setVisibility(View.GONE);
+            vh.noResults.setVisibility(View.GONE);
         }
-        list = (ListView) findViewById(R.id.carList);
 
         //custom array adaptor
         CarListAdaptor listAdaptor = new CarListAdaptor(this, R.layout.custom_list_view, listCars);
-        list.setAdapter(listAdaptor);
+        vh.list.setAdapter(listAdaptor);
 
         //If a list element is clicked, the details activity is opened and the data is passed through.
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        vh.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
                 intent.putExtra("Car", listCars.get(position));
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(LA).toBundle());
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(ListActivity.this).toBundle());
             }
         });
 
@@ -175,11 +187,10 @@ public class ListActivity extends AppCompatActivity {
         allJDMs = DataProvider.getAllJdms();
         allSupercars = DataProvider.getAllHyperCars();
         allSUVs = DataProvider.getAllSuvs();
-        searchView = findViewById(R.id.search_for_cars);
 
         //create custom functionality for pressing the enter key on the keyboard
         //reference: https://stackoverflow.com/questions/4451374/use-enter-key-on-softkeyboard-instead-of-clicking-button
-        searchView.setOnKeyListener(new View.OnKeyListener()
+        vh.searchView.setOnKeyListener(new View.OnKeyListener()
         {
             public boolean onKey(View v, int keyCode, KeyEvent event)
             {
@@ -201,28 +212,28 @@ public class ListActivity extends AppCompatActivity {
 
 
         //run onSearchViewChange() when the SUV checkbox changes which updates the list activity results with relevant cars
-        suv.setOnClickListener(new View.OnClickListener() {
+        vh.suv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                onSearchViewChange();
             }
         });
         //run onSearchViewChange() when the SC checkbox changes which updates the list activity results with relevant cars
-        sc.setOnClickListener(new View.OnClickListener() {
+        vh.sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearchViewChange();
             }
         });
         //run onSearchViewChange() when the JDM checkbox changes which updates the list activity results with relevant cars
-        jdm.setOnClickListener(new View.OnClickListener() {
+        vh.jdm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearchViewChange();
             }
         });
         //run onSearchViewChange() when the text in searchbar changes which updates the list activity results with relevant cars
-        searchView.addTextChangedListener(new TextWatcher() {
+        vh.searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
