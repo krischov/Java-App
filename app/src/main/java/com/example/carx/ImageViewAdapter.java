@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 //code inspired from tutorial https://www.youtube.com/watch?v=nL0k2usU7I8&ab_channel=PRABEESHRK by PRABEESH R K
-//Also used https://developer.android.com/training/animation/screen-slide
 //ImageViewAdapter used to populate the viewpager with 3 images of cars
 public class ImageViewAdapter extends PagerAdapter {
 
@@ -49,11 +48,12 @@ public class ImageViewAdapter extends PagerAdapter {
         Inflate = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
         View view = Inflate.inflate(R.layout.viewpager, container, false);
 
-        //Find image
+        //Find imageview
         ImageView imgView = (ImageView) view.findViewById(R.id.CARPICS);
 
-        //Set image based off name stored in car arraylist<strings> of picStrings
-        imgView.setImageResource(mContext.getResources().getIdentifier( picStrings.get(position), "drawable", mContext.getPackageName()));
+        //Get the image Resource using the string in picStrings
+        int imgResource = mContext.getResources().getIdentifier( picStrings.get(position), "drawable", mContext.getPackageName());
+        imgView.setImageResource(imgResource);
         container.addView(view);
         return view;
     }

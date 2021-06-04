@@ -365,10 +365,6 @@ public class ListActivity extends AppCompatActivity {
             //Pass the data through to list activity
 
             listCars = sortedList;
-//            Intent intent = new Intent(this, ListActivity.class);
-//            intent.putExtra("Cars", sortedList);
-//            intent.putExtra("SString", search);
-//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 2){
             //PRICE LOW TO HIGH
@@ -383,10 +379,6 @@ public class ListActivity extends AppCompatActivity {
             //Reopen the list activity using the sorted list
             //Pass the data through to list activity
             listCars = sortedList;
-//            Intent intent = new Intent(this, ListActivity.class);
-//            intent.putExtra("Cars", sortedList);
-//            intent.putExtra("SString", search);
-//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         else if(RadioFlag == 3) {
 
@@ -396,6 +388,7 @@ public class ListActivity extends AppCompatActivity {
                     int o1FN;
                     int o2FN;
 
+                    //Compare false and true using integers
                     if (o2.factoryNew == false) {
                         o2FN = 0;
                     } else {
@@ -413,11 +406,6 @@ public class ListActivity extends AppCompatActivity {
                 }
             });
             listCars = sortedList;
-//            Intent intent = new Intent(this, ListActivity.class);
-//            intent.putExtra("Cars", sortedList);
-//            intent.putExtra("SString", search);
-//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-
         }
 
         else{
@@ -427,6 +415,7 @@ public class ListActivity extends AppCompatActivity {
                     int o1FN;
                     int o2FN;
 
+                    //Compare false and true using integers
                     if (o2.factoryNew == false) {
                         o2FN = 0;
                     } else {
@@ -446,10 +435,6 @@ public class ListActivity extends AppCompatActivity {
 
 
             listCars = sortedList;
-//            Intent intent = new Intent(this, ListActivity.class);
-//            intent.putExtra("Cars", sortedList);
-//            intent.putExtra("SString", search);
-//            this.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
     }
 }
